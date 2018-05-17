@@ -1,0 +1,77 @@
+@import "../../constants/variables";
+
+.result {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  background: $themeColor url("../../assets/home_downpattern.png") no-repeat center bottom/100%;
+
+  .background {
+    position: relative;
+    width: 666px;
+    height: 502px;
+    margin-top: 224px;
+    background-color: #ebebeb;
+    border-radius: 30px;
+
+    .header {
+      position: absolute;
+      top: -224px;
+      left: 0;
+      width: 100%;
+    }
+
+    .title {
+      position: absolute;
+      top: 106px;
+      left: 0;
+      width: 100%;
+      height: 63px;
+      line-height: 63px;
+      text-align: center;
+      background-color: #4f3e2f;
+      font-size: 36px;
+      color: #fff;
+    }
+  }
+
+  .buttons {
+    position: absolute;
+    left: 0;
+    bottom: 88px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+
+    button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 209px;
+      height: 93px;
+      font-size: 28px;
+      color: #4f3e2f;
+      background: url("../../assets/result_button.png") no-repeat center center/100% 100%;
+      border-style: none;
+      outline: none;
+      cursor: pointer;
+    }
+  }
+}
+
+
+// 页面进入动画
+.slide-enter-active {
+  transition: all 1s ease-in;
+}
+
+.slide-enter {
+  transform: translateY(100%);
+}
+

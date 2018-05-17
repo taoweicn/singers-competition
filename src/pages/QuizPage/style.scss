@@ -1,0 +1,83 @@
+@import "../../constants/variables";
+
+.quiz {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  min-height: calc(100vh - 360px);
+  overflow: hidden;
+  padding-bottom: 360px;
+  background: url("../../assets/question_uppattern.png") no-repeat center top/100%,
+  $themeColor url("../../assets/question_downpattern.png") no-repeat center bottom/100%;
+
+  .question {
+    margin: 86px auto 184px;
+    color: #393a3f;
+    font-size: 36px;
+  }
+
+  // 题目进入动画
+  .slide-enter-active {
+    transition: all .8s;
+  }
+  .slide-leave-active {
+    transition: all .6s;
+  }
+  .slide-enter {
+    transform: translateX(100vw);
+  }
+  .slide-leave-to {
+    transform: translateX(-100vw);
+  }
+
+  .option-container {
+    width: calc(100% - 172px);
+    padding: 0;
+    margin: 0 86px;
+    list-style: none;
+
+    // 选项进入效果
+    .slide-enter-active {
+      &:nth-child(2) {
+        transition-delay: .1s;
+      }
+      &:nth-child(3) {
+        transition-delay: .2s;
+      }
+      &:nth-child(4) {
+        transition-delay: .3s;
+      }
+    }
+
+    .slide-leave-active {
+      &:nth-child(2) {
+        transition-delay: .1s;
+      }
+      &:nth-child(3) {
+        transition-delay: .2s;
+      }
+      &:nth-child(4) {
+        transition-delay: .3s;
+      }
+    }
+  }
+}
+
+// 页面进入动画
+.slide-up-enter-active {
+  transition: all 1s ease-in;
+}
+
+.slide-up-enter {
+  transform: translateY(100%);
+}
+
+// 页面离开动画
+.slide-up-leave-active {
+  transition: all 1s ease-in;
+}
+
+.slide-up-leave-to {
+  transform: translateY(-100%);
+}

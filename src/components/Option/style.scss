@@ -1,5 +1,30 @@
-.container {
+.option {
   width: 100%;
-  height: 74px;
-  border-radius: 30px;
+  margin-bottom: 57px;
+
+  .option-img {
+    width: 100%;
+    margin-bottom: 21px;
+  }
+
+  .option-button {
+    width: 100%;
+    height: 74px;
+    padding: 0 45px;
+    margin: 0;
+    line-height: 74px;
+    border-radius: 30px;
+    color: #4f3e2f;
+    background-color: #fff;
+    font-size: 32px;
+    border-style: none;
+    text-align: left;
+    cursor: pointer;
+    outline: none;
+  }
+
+  .active {
+    color: #fff;
+    background-color: #a67329;
+  }
 }

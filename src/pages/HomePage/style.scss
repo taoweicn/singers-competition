@@ -1,11 +1,15 @@
-.container {
-  position: relative;
+@import "../../constants/variables";
+
+.home {
+  position: absolute;
+  top: 0;
+  left: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100%;
-  height: 100vh;
-  background: #82ceb4 url("../../assets/home_downpattern.png") no-repeat center bottom/100%;
+  height: 100%;
+  background: $themeColor url("../../assets/home_downpattern.png") no-repeat center bottom/100%;
 
   .voice-button {
     position: absolute;
@@ -30,4 +34,12 @@
     outline: none;
     cursor: pointer;
   }
+}
+
+.slide-leave-active {
+  transition: all 1s ease-in;
+}
+
+.slide-leave-to {
+  transform: translateY(-100%);
 }
