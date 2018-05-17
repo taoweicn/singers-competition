@@ -1,0 +1,33 @@
+.container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+  background: #82ceb4 url("../../assets/home_downpattern.png") no-repeat center bottom/100%;
+
+  .voice-button {
+    position: absolute;
+    top: 20px;
+    right: 33px;
+    width: 127px;
+    height: 70px;
+  }
+
+  .cover {
+    margin-top: 86px;
+    width: 574px;
+    height: 672px;
+  }
+
+  .begin-button {
+    margin-top: 41px;
+    width: 289px;
+    height: 134px;
+    border-style: none;
+    background: transparent url("../../assets/home_button.png") no-repeat center center/100% 100%;
+    outline: none;
+    cursor: pointer;
+  }
+}
