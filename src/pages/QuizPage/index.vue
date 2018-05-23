@@ -1,6 +1,7 @@
 <template>
   <transition name="slide-up" mode="out-in">
     <div class="quiz">
+      <VoiceButton class="button" />
       <transition name="slide">
         <h1 class="question" v-if="show">
           {{ questions[currentQuestion].question }}
@@ -22,12 +23,13 @@
 </template>
 
 <script>
-import Option from '@/components/Option/index';
+import Option from '@/components/Option';
+import VoiceButton from '@/components/VoiceButton';
 import questions from '../../../data/questions';
 
 export default {
   name: 'QuizPage',
-  components: { Option },
+  components: { Option, VoiceButton },
   data() {
     return {
       questions,

@@ -9,24 +9,36 @@
   align-items: center;
   width: 100%;
   height: 100%;
-  background: $themeColor url("../../assets/home_downpattern.png") no-repeat center bottom/100%;
+  background: $backgroundColor url("../../assets/home_downpattern.png") no-repeat center bottom/100%;
 
-  .voice-button {
+  .button {
     position: absolute;
     top: 20px;
-    right: 33px;
-    width: 127px;
-    height: 70px;
+    right: 20px;
   }
 
   .cover {
     margin-top: 86px;
     width: 574px;
-    height: 672px;
+    height: 615px;
+  }
+
+  .word-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 72px;
+    background-color: #fff;
+
+    .word {
+      width: 434px;
+      height: 43px;
+    }
   }
 
   .begin-button {
-    margin-top: 41px;
+    margin-top: 40px;
     width: 289px;
     height: 134px;
     border-style: none;

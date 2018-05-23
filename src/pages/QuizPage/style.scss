@@ -1,20 +1,28 @@
 @import "../../constants/variables";
 
 .quiz {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100%;
-  min-height: calc(100vh - 360px);
-  overflow: hidden;
-  padding-bottom: 360px;
+  height: 100vh;
+  overflow: auto;
   background: url("../../assets/question_uppattern.png") no-repeat center top/100%,
-  $themeColor url("../../assets/question_downpattern.png") no-repeat center bottom/100%;
+  $backgroundColor url("../../assets/question_downpattern.png") no-repeat center bottom/100%;
+  transition: all 1s ease-in;
+
+  .button {
+    position: absolute;
+    top: 180px;
+    right: 50px;
+  }
 
   .question {
-    margin: 86px auto 184px;
-    color: #393a3f;
+    margin: 70px 154px 0;
+    color: $textColor;
     font-size: 36px;
+    line-height: 50px;
   }
 
   // 题目进入动画
@@ -32,9 +40,12 @@
   }
 
   .option-container {
+    position: absolute;
+    top: 307px;
+    left: 0;
     width: calc(100% - 172px);
     padding: 0;
-    margin: 0 86px;
+    margin: 0 86px 360px;
     list-style: none;
 
     // 选项进入效果

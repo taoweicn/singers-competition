@@ -1,3 +1,5 @@
+@import '../../constants/variables';
+
 .option {
   width: 100%;
   margin-bottom: 57px;
@@ -14,7 +16,7 @@
     margin: 0;
     line-height: 74px;
     border-radius: 30px;
-    color: #4f3e2f;
+    color: $textColor;
     background-color: #fff;
     font-size: 32px;
     border-style: none;

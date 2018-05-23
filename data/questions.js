@@ -5,7 +5,7 @@ import winterImg from '@/assets/question_long_winter.png';
 
 const questions = [
   {
-    question: '你在ktv唱歌的姿势一般是',
+    question: '听到这首歌\n会想象自己身处什么场景中',
     options: [
       {
         text: 'A.规矩地坐在沙发唱'

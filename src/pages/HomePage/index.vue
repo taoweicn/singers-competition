@@ -1,8 +1,11 @@
 <template>
   <transition name="slide" mode="out-in">
     <div class="home">
-      <img class="voice-button" :src="voiceButton" alt="voice">
-      <img class="cover" src="../../assets/home_pattern.png" alt="cover">
+      <VoiceButton class="button" :isShowText="true" />
+      <img class="cover" src="../../assets/home_cassette.png" alt="cover">
+      <div class="word-container">
+        <img class="word" src="../../assets/home_font.png" alt="cover">
+      </div>
       <router-link to="/quiz">
         <button class="begin-button"></button>
       </router-link>
@@ -11,15 +14,11 @@
 </template>
 
 <script>
-import voiceButton from '@/assets/home_vioce.png';
+import VoiceButton from '@/components/VoiceButton';
 
 export default {
   name: 'HomePage',
-  data() {
-    return {
-      voiceButton
-    };
-  }
+  components: { VoiceButton }
 };
 </script>
 
