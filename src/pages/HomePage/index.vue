@@ -22,7 +22,13 @@ import VoiceButton from '@/components/VoiceButton';
 
 export default {
   name: 'HomePage',
-  components: { VoiceButton }
+  components: { VoiceButton },
+  mounted() {
+    const imgs = document.getElementsByTagName('img');
+    Array.prototype.forEach.call(imgs, (img) => {
+      img.addEventListener('click', e => e.preventDefault());
+    });
+  }
 };
 </script>
 

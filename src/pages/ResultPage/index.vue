@@ -47,7 +47,13 @@
 
 <script>
 export default {
-  name: 'ResultPage'
+  name: 'ResultPage',
+  mounted() {
+    const imgs = document.getElementsByTagName('img');
+    Array.prototype.forEach.call(imgs, (img) => {
+      img.addEventListener('click', e => e.preventDefault());
+    });
+  }
 };
 </script>
 

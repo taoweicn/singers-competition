@@ -64,6 +64,12 @@ export default {
     optionsStatus() {
       this.isAnswered = this.optionsStatus.some(element => element);
     }
+  },
+  mounted() {
+    const imgs = document.getElementsByTagName('img');
+    Array.prototype.forEach.call(imgs, (img) => {
+      img.addEventListener('click', e => e.preventDefault());
+    });
   }
 };
 </script>
