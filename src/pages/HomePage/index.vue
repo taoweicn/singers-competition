@@ -9,6 +9,10 @@
       <router-link to="/quiz">
         <button class="begin-button"></button>
       </router-link>
+      <footer class="copyright">
+        <img class="logo" src="../../assets/result_logo.png" alt="bingyan">
+        Powered by Bingyan Studio
+      </footer>
     </div>
   </transition>
 </template>
