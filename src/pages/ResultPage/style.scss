@@ -23,7 +23,9 @@
       position: absolute;
       top: -218px;
       left: 63px;
-      width: 540px;
+      width: 552px;
+      height: 409px;
+      background: url("../../assets/result_pattern.png") no-repeat center center/100% 100%;
     }
 
     .flag {
@@ -32,6 +34,7 @@
       right: 19px;
       width: 73px;
       height: 93px;
+      background: url("../../assets/result_flag.png") no-repeat center center/100% 100%;
     }
 
     .banner {
@@ -75,59 +78,57 @@
       }
     }
 
-    .report-container {
+    .report {
       position: absolute;
       top: 241px;
       left: 0;
+      display: flex;
+      justify-content: space-between;
       width: 100%;
 
-      .report {
-        display: flex;
-        justify-content: space-between;
-        width: 100%;
-
-        .words {
-          padding: 16px 0 0 46px;
-          margin: 0;
-          width: 275px;
-          color: $textColor;
-          font-size: 28px;
-          letter-spacing: 2px;
-        }
-
-        .image {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          width: 345px;
-
-          img {
-            width: 184px;
-            height: 176px;
-          }
-        }
-      }
-
-      .speaker {
-        margin-left: 18px;
-
-        .left {
-          width: 83px;
-          height: 83px;
-        }
-
-        .right {
-          width: 378px;
-          height: 83px;
-        }
-      }
-
-      .prompt {
-        width: 424px;
-        margin: 25px 0 0 18px;
+      .words {
+        padding: 16px 0 0 46px;
+        margin: 0;
+        width: 275px;
         color: $textColor;
-        font-size: 22px;
+        font-size: 28px;
+        letter-spacing: 2px;
       }
+
+      .image {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 345px;
+
+        img {
+          width: 184px;
+          height: 176px;
+        }
+      }
+    }
+
+    .speaker {
+      position: absolute;
+      bottom: 90px;
+      left: 18px;
+      display: flex;
+
+      .left {
+        width: 83px;
+        height: 83px;
+      }
+    }
+
+    .prompt {
+      position: absolute;
+      bottom: 22px;
+      left: 18px;
+      width: 424px;
+      margin: 25px 0 0 18px;
+      color: $textColor;
+      font-size: 22px;
+      line-height: 31px;
     }
   }
 
@@ -162,14 +163,11 @@
     bottom: 20px;
     display: flex;
     align-items: center;
+    height: 37px;
+    padding-left: 43px;
     color: #5d7071;
     font-size: 24px;
-
-    img {
-      width: 35px;
-      height: 37px;
-      margin-right: 8px;
-    }
+    background: url("../../assets/result_logo.png") no-repeat left center/35px 37px;
   }
 }
 

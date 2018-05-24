@@ -15,7 +15,7 @@
           :text="item.text"
           :imgSrc="item.imgSrc"
           :active="optionsStatus[index]"
-          @click.native="clickOption(index)"
+          @click.native.prevent="clickOption(index)"
         />
       </ul>
     </div>
@@ -64,12 +64,6 @@ export default {
     optionsStatus() {
       this.isAnswered = this.optionsStatus.some(element => element);
     }
-  },
-  mounted() {
-    const imgs = document.getElementsByTagName('img');
-    Array.prototype.forEach.call(imgs, (img) => {
-      img.addEventListener('click', e => e.preventDefault());
-    });
   }
 };
 </script>

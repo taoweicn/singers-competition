@@ -1,0 +1,26 @@
+.voice-box {
+  display: flex;
+  align-items: center;
+
+  .button {
+    width: 281px;
+    height: 82px;
+    border-style: none;
+    outline: none;
+    background: no-repeat center center/100% 100%;
+  }
+
+  .time {
+    margin-left: 29px;
+    font-size: 26px;
+    color: #9c9c9c;
+  }
+
+  .dot{
+    margin-left: 6px;
+    width: 21px;
+    height: 21px;
+    border-radius: 50%;
+    background-color: #ff2a2a;
+  }
+}
