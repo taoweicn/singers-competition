@@ -1,18 +1,16 @@
 @import "../../constants/variables";
 
 .result {
-  position: absolute;
-  top: 0;
-  left: 0;
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100%;
-  height: 100%;
+  height: 100vh;
   background: $backgroundColor url("../../assets/home_downpattern.png") no-repeat center bottom/100%;
 
   .fade-leave-active {
-    transition: all 0.6s;
+    transition: all 1s;
   }
 
   .fade-leave-to {
@@ -56,165 +54,173 @@
         &:nth-child(4) {
           animation-delay: 0.9s;
         }
-      };
+      }
+    ;
 
       @keyframes jump {
-        50%{
+        50% {
           transform: translateY(-40px);
         }
       }
     }
 
-    .text {
+    .loading-text {
       margin-top: 37px;
       color: $textColor;
       font-size: 36px;
     }
   }
 
-  .background {
-    position: relative;
-    width: 666px;
-    height: 726px;
-    margin-top: 224px;
-    background-color: #ebebeb;
-    border-radius: 30px;
+  .main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
 
-    .header {
-      position: absolute;
-      top: -218px;
-      left: 63px;
-      width: 552px;
-      height: 409px;
-      background: url("../../assets/result_pattern.png") no-repeat center center/100% 100%;
+    .background {
+      position: relative;
+      width: 666px;
+      height: 726px;
+      margin-top: 224px;
+      background-color: #ebebeb;
+      border-radius: 30px;
+
+      .header {
+        position: absolute;
+        top: -218px;
+        left: 63px;
+        width: 552px;
+        height: 409px;
+        background: url("../../assets/result_pattern.png") no-repeat center center/100% 100%;
+      }
+
+      .flag {
+        position: absolute;
+        top: 176px;
+        right: 19px;
+        width: 73px;
+        height: 93px;
+        background: url("../../assets/result_flag.png") no-repeat center center/100% 100%;
+      }
+
+      .banner {
+        position: absolute;
+        top: 106px;
+        left: 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: calc(100% - 36px);
+        height: 109px;
+        padding: 13px 18px;
+        background-color: $textColor;
+
+        .avatar {
+          height: 100%;
+        }
+
+        .text {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-around;
+          width: calc(100% - 103px);
+          height: 100%;
+          margin-left: 20px;
+          color: #fff;
+
+          .username {
+            padding: 0;
+            margin: 0;
+            font-size: 32px;
+            font-weight: normal;
+          }
+
+          .title {
+            padding: 0;
+            margin: 0;
+            font-size: 36px;
+            font-weight: normal;
+          }
+        }
+      }
+
+      .report {
+        position: absolute;
+        top: 241px;
+        left: 0;
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+
+        .words {
+          padding: 16px 0 0 46px;
+          margin: 0;
+          width: 275px;
+          color: $textColor;
+          font-size: 28px;
+          letter-spacing: 2px;
+        }
+
+        .image {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 345px;
+
+          img {
+            width: 184px;
+            height: 176px;
+          }
+        }
+      }
+
+      .speaker {
+        position: absolute;
+        bottom: 90px;
+        left: 18px;
+        display: flex;
+
+        .left {
+          width: 83px;
+          height: 83px;
+        }
+      }
+
+      .prompt {
+        position: absolute;
+        bottom: 22px;
+        left: 18px;
+        width: 424px;
+        margin: 25px 0 0 18px;
+        color: $textColor;
+        font-size: 22px;
+        line-height: 31px;
+      }
     }
 
-    .flag {
+    .buttons {
       position: absolute;
-      top: 176px;
-      right: 19px;
-      width: 73px;
-      height: 93px;
-      background: url("../../assets/result_flag.png") no-repeat center center/100% 100%;
-    }
-
-    .banner {
-      position: absolute;
-      top: 106px;
       left: 0;
+      bottom: 88px;
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      width: calc(100% - 36px);
-      height: 109px;
-      padding: 13px 18px;
-      background-color: $textColor;
-
-      .avatar {
-        height: 100%;
-      }
-
-      .text {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-around;
-        width: calc(100% - 103px);
-        height: 100%;
-        margin-left: 20px;
-        color: #fff;
-
-        .username {
-          padding: 0;
-          margin: 0;
-          font-size: 32px;
-          font-weight: normal;
-        }
-
-        .title {
-          padding: 0;
-          margin: 0;
-          font-size: 36px;
-          font-weight: normal;
-        }
-      }
-    }
-
-    .report {
-      position: absolute;
-      top: 241px;
-      left: 0;
-      display: flex;
-      justify-content: space-between;
+      justify-content: space-around;
       width: 100%;
 
-      .words {
-        padding: 16px 0 0 46px;
-        margin: 0;
-        width: 275px;
-        color: $textColor;
-        font-size: 28px;
-        letter-spacing: 2px;
-      }
-
-      .image {
+      button {
         display: flex;
         align-items: center;
         justify-content: center;
-        width: 345px;
-
-        img {
-          width: 184px;
-          height: 176px;
-        }
+        width: 209px;
+        height: 93px;
+        padding-bottom: 10px;
+        font-size: 28px;
+        color: $textColor;
+        background: url("../../assets/result_button.png") no-repeat center center/100% 100%;
+        border-style: none;
+        outline: none;
+        cursor: pointer;
       }
-    }
-
-    .speaker {
-      position: absolute;
-      bottom: 90px;
-      left: 18px;
-      display: flex;
-
-      .left {
-        width: 83px;
-        height: 83px;
-      }
-    }
-
-    .prompt {
-      position: absolute;
-      bottom: 22px;
-      left: 18px;
-      width: 424px;
-      margin: 25px 0 0 18px;
-      color: $textColor;
-      font-size: 22px;
-      line-height: 31px;
-    }
-  }
-
-  .buttons {
-    position: absolute;
-    left: 0;
-    bottom: 88px;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    width: 100%;
-
-    button {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 209px;
-      height: 93px;
-      padding-bottom: 10px;
-      font-size: 28px;
-      color: $textColor;
-      background: url("../../assets/result_button.png") no-repeat center center/100% 100%;
-      border-style: none;
-      outline: none;
-      cursor: pointer;
     }
   }
 
@@ -231,14 +237,3 @@
     background: url("../../assets/result_logo.png") no-repeat left center/35px 37px;
   }
 }
-
-
-// 页面进入动画
-.slide-enter-active {
-  transition: all 1s ease-in;
-}
-
-.slide-enter {
-  transform: translateY(100%);
-}
-

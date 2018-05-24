@@ -1,21 +1,21 @@
 <template>
-  <transition name="slide">
-    <div class="result">
-      <transition name="fade">
-        <div v-if="isLoading" class="loading">
-          <div class="animation">
-            <div class="square"></div>
-            <div class="square"></div>
-            <div class="square"></div>
-          </div>
-          <p class="text">
-            正在生成你的音乐品味鉴定书
-          </p>
-          <footer class="copyright">
-            Powered by Bingyan Studio
-          </footer>
+  <div class="result">
+    <transition name="fade">
+      <div v-if="isLoading" class="loading">
+        <div class="animation">
+          <div class="square"></div>
+          <div class="square"></div>
+          <div class="square"></div>
         </div>
-      </transition>
+        <p class="text">
+          正在生成你的音乐品味鉴定书
+        </p>
+        <footer class="copyright">
+          Powered by Bingyan Studio
+        </footer>
+      </div>
+    </transition>
+    <main class="main">
       <section class="background">
         <header class="header"></header>
         <div class="flag"></div>
@@ -50,11 +50,11 @@
         <button>为TA打call</button>
         <button>分享给好友</button>
       </section>
-      <footer class="copyright">
-        Powered by Bingyan Studio
-      </footer>
-    </div>
-  </transition>
+    </main>
+    <footer class="copyright">
+      Powered by Bingyan Studio
+    </footer>
+  </div>
 </template>
 
 <script>
