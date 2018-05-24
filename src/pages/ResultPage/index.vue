@@ -1,6 +1,21 @@
 <template>
   <transition name="slide">
     <div class="result">
+      <transition name="fade">
+        <div v-if="isLoading" class="loading">
+          <div class="animation">
+            <div class="square"></div>
+            <div class="square"></div>
+            <div class="square"></div>
+          </div>
+          <p class="text">
+            正在生成你的音乐品味鉴定书
+          </p>
+          <footer class="copyright">
+            Powered by Bingyan Studio
+          </footer>
+        </div>
+      </transition>
       <section class="background">
         <header class="header"></header>
         <div class="flag"></div>
@@ -47,7 +62,17 @@ import VoiceBox from '@/components/VoiceBox';
 
 export default {
   name: 'ResultPage',
-  components: { VoiceBox }
+  components: { VoiceBox },
+  data() {
+    return {
+      isLoading: true
+    };
+  },
+  created() {
+    setTimeout(() => {
+      this.isLoading = false;
+    }, 3000);
+  }
 };
 </script>
 

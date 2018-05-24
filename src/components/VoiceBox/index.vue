@@ -34,11 +34,13 @@ export default {
   methods: {
     begin() {
       this.isRead = true;
+      clearTimeout(this.timer);
       if (this.animate === true) {
         this.animate = false; // 已开启的就关闭
+        return;
       }
       this.animate = true;
-      setTimeout(() => {
+      this.timer = setTimeout(() => {
         this.animate = false;
       }, this.time);
     }
