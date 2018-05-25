@@ -80,7 +80,7 @@
     .background {
       position: relative;
       width: 666px;
-      height: 726px;
+      padding: 241px 0 180px;
       margin-top: 224px;
       background-color: #ebebeb;
       border-radius: 30px;
@@ -96,7 +96,7 @@
 
       .flag {
         position: absolute;
-        top: 176px;
+        top: 200px;
         right: 19px;
         width: 73px;
         height: 93px;
@@ -145,12 +145,10 @@
       }
 
       .report {
-        position: absolute;
-        top: 241px;
-        left: 0;
         display: flex;
         justify-content: space-between;
         width: 100%;
+        min-height: 310px;
 
         .words {
           padding: 16px 0 0 46px;
@@ -161,16 +159,12 @@
           letter-spacing: 2px;
         }
 
-        .image {
+        #radar {
           display: flex;
           align-items: center;
           justify-content: center;
           width: 345px;
-
-          img {
-            width: 184px;
-            height: 176px;
-          }
+          min-height: 310px;
         }
       }
 
@@ -191,7 +185,7 @@
         bottom: 22px;
         left: 18px;
         width: 424px;
-        margin: 25px 0 0 18px;
+        margin: 0 0 0 18px;
         color: $textColor;
         font-size: 22px;
         line-height: 31px;

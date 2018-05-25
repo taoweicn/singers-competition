@@ -35,9 +35,7 @@
             <p class="words">
               一共十种结果，随机随缘，一共十种结果，随机随缘，一共十种结果，随机随缘，一十种结果，随机随缘，一共十种结果，随机随缘，一共十种结果，随机随缘。
             </p>
-            <div class="image">
-              <img src="../../assets/result_pentagon.png" alt="pentagon">
-            </div>
+            <div id="radar"></div>
           </div>
           <div class="speaker">
             <img class="left" src="../../assets/result_user.png" alt="user">
@@ -61,6 +59,8 @@
 
 <script>
 import VoiceBox from '@/components/VoiceBox';
+import G2 from '@antv/g2';
+import { View } from '@antv/data-set';
 
 export default {
   name: 'ResultPage',
@@ -70,10 +70,80 @@ export default {
       isLoading: true
     };
   },
+  methods: {
+    renderRadar() {
+      const data = [
+        { item: '闷骚', score: 2 },
+        { item: '戏精', score: 3 },
+        { item: '文艺', score: 3 },
+        { item: '装逼', score: 2 },
+        { item: '孤独', score: 1 }
+      ];
+      const dv = new View().source(data);
+      const chart = new G2.Chart({
+        container: 'radar',
+        height: '136',
+        forceFit: true,
+        padding: 5
+      });
+      chart.source(dv, {
+        score: {
+          min: 0,
+          max: 3,
+          tickCount: 4
+        }
+      });
+      chart.tooltip(true, {
+        shared: false
+      });
+      chart.coord('polar', {
+        radius: 0.8
+      });
+      chart.axis('item', {
+        line: null,
+        tickLine: null,
+        grid: {
+          lineStyle: {
+            lineDash: null,
+            stroke: '#4f3e2f',
+            lineWidth: 2
+          },
+          hideFirstLine: false
+        },
+        label: {
+          offset: 5,
+          textStyle: {
+            fill: '#4f3e2f',
+            fontSize: 11
+          }
+        }
+      });
+      chart.axis('score', {
+        line: null,
+        tickLine: null,
+        grid: {
+          type: 'polygon',
+          lineStyle: {
+            lineDash: null,
+            stroke: '#4f3e2f',
+            lineWidth: 2
+          }
+        },
+        label: false
+      });
+      chart.legend('user', false);
+      chart.line().position('item*score').color('rgba(248,185,92,0.8)').size(2);
+      chart.area().position('item*score').color('rgba(255,218,165,0.8)');
+      chart.render();
+    }
+  },
   created() {
     setTimeout(() => {
       this.isLoading = false;
-    }, 3000);
+    }, 0);
+  },
+  mounted() {
+    this.renderRadar();
   }
 };
 </script>
