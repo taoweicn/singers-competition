@@ -80,6 +80,13 @@ export default {
         { item: '孤独', score: 1 }
       ];
       const dv = new View().source(data);
+      dv.transform({
+        type: 'fold',
+        fields: 'score', // 展开字段集
+        key: 'score',
+        value: 'score' // value字段
+      });
+      console.log(dv);
       const chart = new G2.Chart({
         container: 'radar',
         height: '136',
