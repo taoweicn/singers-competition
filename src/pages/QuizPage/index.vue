@@ -56,7 +56,7 @@ export default {
           this.show = true;
         }, 1000);
       } else {
-        this.$router.push('/result');
+        this.$router.replace('/result');
       }
     }
   },

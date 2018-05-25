@@ -9,11 +9,11 @@
   height: 100vh;
   background: $backgroundColor url("../../assets/home_downpattern.png") no-repeat center bottom/100%;
 
-  .fade-leave-active {
-    transition: all 1s;
+  .fade-out-leave-active {
+    transition: all 0.5s;
   }
 
-  .fade-leave-to {
+  .fade-out-leave-to {
     opacity: 0;
   }
 
@@ -236,4 +236,12 @@
     font-size: 24px;
     background: url("../../assets/result_logo.png") no-repeat left center/35px 37px;
   }
+}
+
+.fade-in-enter {
+  opacity: 0;
+}
+
+.fade-in-enter-active {
+  transition: all 0.5s;
 }

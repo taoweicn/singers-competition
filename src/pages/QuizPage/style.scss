@@ -7,10 +7,9 @@
   align-items: center;
   width: 100%;
   height: 100vh;
-  overflow: auto;
+  overflow-x: hidden;
   background: url("../../assets/question_uppattern.png") no-repeat center top/100%,
   $backgroundColor url("../../assets/question_downpattern.png") no-repeat center bottom/100%;
-  transition: all 1s ease-in;
 
   .button {
     position: absolute;
@@ -19,7 +18,11 @@
   }
 
   .question {
-    margin: 70px 154px 0;
+    position: absolute;
+    top: 70px;
+    left: 0;
+    padding: 0 154px;
+    margin: 0;
     color: $textColor;
     font-size: 36px;
     line-height: 50px;
@@ -40,13 +43,12 @@
   }
 
   .option-container {
-    position: absolute;
-    top: 307px;
-    left: 0;
     width: calc(100% - 172px);
-    padding: 0;
-    margin: 0 86px 360px;
+    padding: 0 172px;
+    margin-top: 307px;
     list-style: none;
+    overflow-x: hidden;
+    overflow-y: auto;
 
     // 选项进入效果
     .slide-enter-active {
@@ -77,18 +79,9 @@
 
 // 页面进入动画
 .slide-up-enter-active {
-  transition: all 1s ease-in;
+  transition: all 1.5s ease-in;
 }
 
 .slide-up-enter {
   transform: translateY(100%);
-}
-
-// 页面离开动画
-.slide-up-leave-active {
-  transition: all 1s ease-in;
-}
-
-.slide-up-leave-to {
-  transform: translateY(-100%);
 }
