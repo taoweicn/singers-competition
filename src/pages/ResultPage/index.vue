@@ -55,8 +55,8 @@
       </footer>
       <div class="float-layer" v-if="isShowSharePicture" @click="isShowMask = false">
         <div class="mask" v-if="isShowMask">
-          <img class="arrow" src="../../assets/result_arrow.png">
-          <img class="save-it" src="../../assets/result_saveit.png">
+          <div class="arrow"></div>
+          <div class="save-it"></div>
         </div>
         <img :src="sharePictureURL" alt="share" class="share-img">
       </div>
