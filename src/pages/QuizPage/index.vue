@@ -18,6 +18,7 @@
           @click.native.prevent="clickOption(index)"
         />
       </ul>
+      <autio>浏览器版本过低！</autio>
     </div>
   </transition>
 </template>

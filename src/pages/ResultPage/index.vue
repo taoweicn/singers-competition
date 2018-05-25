@@ -55,9 +55,8 @@
       </footer>
       <div class="float-layer" v-if="isShowSharePicture" @click="isShowMask = false">
         <div class="mask" v-if="isShowMask">
-          <p class="share-prompt">
-            或长按保存图片分享鉴定书，和更多小伙伴一起测试！
-          </p>
+          <img class="arrow" src="../../assets/result_arrow.png">
+          <img class="save-it" src="../../assets/result_saveit.png">
         </div>
         <img :src="sharePictureURL" alt="share" class="share-img">
       </div>
@@ -70,6 +69,9 @@ import VoiceBox from '@/components/VoiceBox';
 import G2 from '@antv/g2';
 import { View } from '@antv/data-set';
 import sharePicture from '@/assets/share_demo.png';
+import singerPicture from '../../../data/singers_picture';
+
+console.log(singerPicture);
 
 export default {
   name: 'ResultPage',
@@ -162,7 +164,8 @@ export default {
           '苟富贵，勿相汪',
           '一共十种结果，随机随缘，一共十种结果，随机随缘，一十种结果，随机随缘，一共十种结果，随机随缘，一共十种结果，随机随缘。',
           'http://thirdwx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTKhRHicJPfiaraMP6CPXDdkRrFaJdAPEP7u9rBeiaVs5WnGXowmFVnWfb68kWSY5AbQNyqia9Cp6G3cDA/132',
-          chart.toDataURL()
+          chart.toDataURL(),
+          singerPicture
         );
       }, 1000);
     },
@@ -185,10 +188,9 @@ export default {
         this.drawImage(content, avatarURL, 60, 344, 83, 83); // 绘制用户头像
         this.drawImage(content, radarMapDataURL, 400, 474, 320, 250); // 绘制雷达图
         this.drawImage(content, singersURL, 115, 878, 371, 205); // 绘制歌手图片
-        this.sharePictureURL = canvas.toDataURL();
-        // setTimeout(() => {
-        //   this.sharePictureURL = canvas.toDataURL();
-        // }, 1000);
+        setTimeout(() => {
+          this.sharePictureURL = canvas.toDataURL();
+        }, 1000);
       };
     },
     drawImage(content, url, x, y, width, height) {
@@ -233,7 +235,7 @@ export default {
   created() {
     setTimeout(() => {
       this.isLoading = false;
-    }, 1500);
+    }, 2000);
   },
   mounted() {
     this.renderRadarMap();
