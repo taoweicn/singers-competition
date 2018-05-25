@@ -96,7 +96,7 @@
 
       .flag {
         position: absolute;
-        top: 200px;
+        top: 240px;
         right: 19px;
         width: 73px;
         height: 93px;
@@ -229,6 +229,37 @@
     color: #5d7071;
     font-size: 24px;
     background: url("../../assets/result_logo.png") no-repeat left center/35px 37px;
+  }
+
+  .float-layer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+
+    .mask {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+
+      .share-prompt{
+        margin: 0;
+        font-size: 28px;
+        color: #fff;
+        line-height: 39px;
+        transform: translateX(-50%);
+      }
+    }
+
+    .share-img {
+      width: 100%;
+      height: 100%
+    }
   }
 }
 

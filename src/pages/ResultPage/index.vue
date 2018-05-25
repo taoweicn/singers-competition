@@ -47,12 +47,20 @@
         </section>
         <section class="buttons">
           <button>为TA打call</button>
-          <button>分享给好友</button>
+          <button @click="share">分享给好友</button>
         </section>
       </main>
       <footer class="copyright">
         Powered by Bingyan Studio
       </footer>
+      <div class="float-layer" v-if="isShowSharePicture" @click="isShowMask = false">
+        <div class="mask" v-if="isShowMask">
+          <p class="share-prompt">
+            或长按保存图片分享鉴定书，和更多小伙伴一起测试！
+          </p>
+        </div>
+        <img :src="sharePictureURL" alt="share" class="share-img">
+      </div>
     </div>
   </transition>
 </template>
@@ -61,37 +69,43 @@
 import VoiceBox from '@/components/VoiceBox';
 import G2 from '@antv/g2';
 import { View } from '@antv/data-set';
+import sharePicture from '@/assets/share_demo.png';
 
 export default {
   name: 'ResultPage',
   components: { VoiceBox },
   data() {
     return {
-      isLoading: true
+      isLoading: true,
+      sharePictureURL: '',
+      isShowSharePicture: false,
+      isShowMask: true
     };
   },
   methods: {
-    renderRadar() {
+    share() {
+      this.isShowSharePicture = true;
+    },
+    renderRadarMap() {
       const data = [
-        { item: '闷骚', score: 2 },
-        { item: '戏精', score: 3 },
-        { item: '文艺', score: 3 },
-        { item: '装逼', score: 2 },
-        { item: '孤独', score: 1 }
+        { item: '闷骚', score: Math.floor(Math.random() * 3) + 1 },
+        { item: '戏精', score: Math.floor(Math.random() * 3) + 1 },
+        { item: '文艺', score: Math.floor(Math.random() * 3) + 1 },
+        { item: '装逼', score: Math.floor(Math.random() * 3) + 1 },
+        { item: '孤独', score: Math.floor(Math.random() * 3) + 1 }
       ];
       const dv = new View().source(data);
       dv.transform({
         type: 'fold',
-        fields: 'score', // 展开字段集
+        fields: ['score'], // 展开字段集
         key: 'score',
         value: 'score' // value字段
       });
-      console.log(dv);
       const chart = new G2.Chart({
         container: 'radar',
         height: '136',
         forceFit: true,
-        padding: 5
+        padding: [5, 18]
       });
       chart.source(dv, {
         score: {
@@ -142,15 +156,87 @@ export default {
       chart.line().position('item*score').color('rgba(248,185,92,0.8)').size(2);
       chart.area().position('item*score').color('rgba(255,218,165,0.8)');
       chart.render();
+      // 给动画留下缓冲时间
+      setTimeout(() => {
+        this.renderSharePicture(
+          '苟富贵，勿相汪',
+          '一共十种结果，随机随缘，一共十种结果，随机随缘，一十种结果，随机随缘，一共十种结果，随机随缘，一共十种结果，随机随缘。',
+          'http://thirdwx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTKhRHicJPfiaraMP6CPXDdkRrFaJdAPEP7u9rBeiaVs5WnGXowmFVnWfb68kWSY5AbQNyqia9Cp6G3cDA/132',
+          chart.toDataURL()
+        );
+      }, 1000);
+    },
+    renderSharePicture(username, resultText, avatarURL, radarMapDataURL, singersURL) {
+      if (typeof username !== 'string') return;
+      const background = new Image();
+      background.src = sharePicture;
+      const canvas = document.createElement('canvas');
+      const content = canvas.getContext('2d');
+      background.onload = () => {
+        canvas.width = background.width;
+        canvas.height = background.height;
+        content.drawImage(background, 0, 0); // 绘制背景图片
+        content.fillStyle = '#fff';
+        content.font = '32px PingFang-SC-Bold';
+        content.fillText(username, 165, 375); // 绘制用户名
+        content.fillStyle = '#4f3e2f';
+        content.font = '28px/1.4 PingFang-SC-Bold';
+        this.wrapText(content, resultText, 88, 480, 285, 39); // 绘制结果文字
+        this.drawImage(content, avatarURL, 60, 344, 83, 83); // 绘制用户头像
+        this.drawImage(content, radarMapDataURL, 400, 474, 320, 250); // 绘制雷达图
+        this.drawImage(content, singersURL, 115, 878, 371, 205); // 绘制歌手图片
+        this.sharePictureURL = canvas.toDataURL();
+        // setTimeout(() => {
+        //   this.sharePictureURL = canvas.toDataURL();
+        // }, 1000);
+      };
+    },
+    drawImage(content, url, x, y, width, height) {
+      const image = new Image(width, height);
+      image.src = url;
+      image.crossOrigin = 'Anonymous';
+      image.onload = () => {
+        content.drawImage(image, x, y, width, height);
+      };
+    },
+    wrapText(context, text, x, y, maxWidth, lineHeight) {
+      const words = text.split(' ');
+      let line = '';
+      let test;
+      let metrics;
+
+      for (let i = 0; i < words.length; i += 1) {
+        test = words[i];
+        metrics = context.measureText(test);
+        while (metrics.width > maxWidth) {
+          // Determine how much of the word will fit
+          test = test.substring(0, test.length - 1);
+          metrics = context.measureText(test);
+        }
+        if (words[i] !== test) {
+          words.splice(i + 1, 0, words[i].substr(test.length));
+          words[i] = test;
+        }
+        test = `${line}${words[i]} `;
+        metrics = context.measureText(test);
+        if (metrics.width > maxWidth && i > 0) {
+          context.fillText(line, x, y);
+          line = `${words[i]} `;
+          y += lineHeight; // eslint-disable-line no-param-reassign
+        } else {
+          line = test;
+        }
+      }
+      context.fillText(line, x, y);
     }
   },
   created() {
     setTimeout(() => {
       this.isLoading = false;
-    }, 0);
+    }, 1500);
   },
   mounted() {
-    this.renderRadar();
+    this.renderRadarMap();
   }
 };
 </script>
