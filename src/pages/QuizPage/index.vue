@@ -59,8 +59,8 @@ export default {
       setLocal('mute', this.mute);
     },
     clickOption(index) {
-      this.$refs.audio.pause();
       if (this.isAnswered) return; // 防止多次点击
+      this.$refs.audio.pause();
       this.$set(this.optionsStatus, index, true);
       setTimeout(() => {
         this.show = false;

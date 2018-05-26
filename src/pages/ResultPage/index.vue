@@ -46,7 +46,11 @@
           </p>
         </section>
         <section class="buttons">
-          <button>为TA打call</button>
+          <a href="https://music.163.com/independ/vote/59005">
+            <button>
+            为TA打call
+            </button>
+          </a>
           <button @click="share">分享给好友</button>
         </section>
       </main>

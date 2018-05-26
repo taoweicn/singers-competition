@@ -24,7 +24,8 @@
 <script>
 import VoiceButton from '@/components/VoiceButton';
 import { getLocal, setLocal } from '@/utils/cache';
-import * as api from '@/api';
+import { judgeStatus } from '@/api';
+import wxShare from '@/plugins/wx';
 
 export default {
   name: 'HomePage',
@@ -41,13 +42,15 @@ export default {
     }
   },
   created() {
-    api.judgeStatus().then((res) => {
+    judgeStatus().then((res) => {
+      console.log(res);
       if (!res.data.status) {
-        window.location.href = res.data.data.redirect_uri;
+        // window.location.href = res.data.data.redirect_uri;
       } else {
         console.log(res.data);
       }
     });
+    wxShare();
   },
   mounted() {
     const imgs = document.getElementsByTagName('img');
