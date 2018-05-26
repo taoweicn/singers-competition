@@ -24,6 +24,7 @@
 <script>
 import VoiceButton from '@/components/VoiceButton';
 import { getLocal, setLocal } from '@/utils/cache';
+import * as api from '@/api';
 
 export default {
   name: 'HomePage',
@@ -38,6 +39,15 @@ export default {
       this.mute = !this.mute;
       setLocal('mute', this.mute);
     }
+  },
+  created() {
+    api.judgeStatus().then((res) => {
+      if (!res.data.status) {
+        window.location.href = res.data.data.redirect_uri;
+      } else {
+        console.log(res.data);
+      }
+    });
   },
   mounted() {
     const imgs = document.getElementsByTagName('img');

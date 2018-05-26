@@ -234,7 +234,7 @@ export default {
   created() {
     setTimeout(() => {
       this.isLoading = false;
-    }, 2000);
+    }, 3500);
   },
   mounted() {
     this.renderRadarMap();
