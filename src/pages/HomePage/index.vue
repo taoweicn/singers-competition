@@ -33,8 +33,6 @@ import { judgeStatus } from '@/api';
 import wxShare from '@/plugins/wx';
 import resources from './preload_resources';
 
-console.log(resources);
-
 export default {
   name: 'HomePage',
   components: { VoiceButton, Preload },
@@ -54,7 +52,7 @@ export default {
     judgeStatus().then((res) => {
       console.log(res);
       if (!res.data.status) {
-        // window.location.href = res.data.data.redirect_uri;
+        // window.location.href = res.data.data;
       } else {
         console.log(res.data);
       }

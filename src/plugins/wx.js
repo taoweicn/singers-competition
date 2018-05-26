@@ -21,8 +21,8 @@ getWXconfig().then((res) => {
 const wxShareConfig = {
   title: '测测哪位十佳歌手最合你的音乐品味', // 分享标题
   desc: '我最匹配的十大歌手', // 分享描述
-  link: 'https://top-singers.hustonline.net/', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
-  imgUrl: `https://top-singers.hustonline.net/${shareIcon}` // 分享图标
+  link: 'https://weixin.bingyan-tech.hustonline.net/top-singers-index/', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+  imgUrl: `https://weixin.bingyan-tech.hustonline.net/top-singers-index/${shareIcon}` // 分享图标
 };
 
 const wxShare = (config = wxShareConfig) => wx.ready(() => {
