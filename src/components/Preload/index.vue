@@ -36,14 +36,9 @@ export default {
     // 加载完成后执行的回调
     loaded() {
       this.loadedCount += 1;
-      if (this.loadedCount >= this.resources.length) {
+      if (this.loadedCount >= this.images.length + this.audios.length) {
         this.show = false;
       }
-    }
-  },
-  computed: {
-    percentage() {
-      return Math.round((this.loadedCount / this.resources.length) * 100);
     }
   },
   created() {
