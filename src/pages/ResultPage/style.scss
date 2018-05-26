@@ -272,6 +272,56 @@
       height: 100%
     }
   }
+
+  .input-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 1;
+
+    .modal {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 535px;
+      height: 356px;
+      margin-top: 291px;
+      background-color: #ebebeb;
+      border-radius: 30px;
+
+      img {
+        width: 328px;
+        margin-top: 36px;
+      }
+
+      input {
+        width: 363px;
+        height: 77px;
+        padding: 0 30px;
+        margin-top: 33px;
+        color: $textColor;
+        border-radius: 20px;
+        border: solid 6px #b6b6b4;
+        outline: none;
+      }
+    }
+
+    .confirm-button {
+      width: 315px;
+      height: 154px;
+      margin-top: 32px;
+      cursor: pointer;
+      border-style: none;
+      outline: none;
+      background: url("../../assets/button_confirm.png") no-repeat center center/100% 100%;
+    }
+  }
 }
 
 .fade-in-enter {

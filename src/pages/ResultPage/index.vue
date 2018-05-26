@@ -2,7 +2,7 @@
   <transition name="fade-in">
     <div class="result">
       <transition name="fade-out">
-        <div v-if="isLoading" class="loading">
+        <div v-if="isLoading && !isShowInput" class="loading">
           <div class="animation">
             <div class="square"></div>
             <div class="square"></div>
@@ -16,15 +16,22 @@
           </footer>
         </div>
       </transition>
-      <main class="main">
+      <div v-if="isShowInput" class="input-container">
+        <div class="modal">
+          <img src="../../assets/write_your_name.png" alt="write_your_name">
+          <input v-model="username" type="text">
+        </div>
+        <button class="confirm-button" @click="confirm"></button>
+      </div>
+      <main v-show="!isShowInput" class="main">
         <section class="background">
           <header class="header"></header>
           <div class="flag"></div>
           <div class="banner">
-            <img src="https://avatars2.githubusercontent.com/u/25795549?s=400&u=faeb356a76c70c8c929fc88b3a5396fb761d60ee&v=4" alt="avatar" class="avatar">
+            <img :src="avatar" alt="avatar" class="avatar">
             <div class="text">
               <h1 class="username">
-                这里是用户名字
+                {{username}}
               </h1>
               <h2 class="title">
                 独一无二的音乐品味鉴定书
@@ -51,7 +58,7 @@
             为TA打call
             </button>
           </a>
-          <button @click="share">分享给好友</button>
+          <button @click="isShowSharePicture = true">分享给好友</button>
         </section>
       </main>
       <footer class="copyright">
@@ -73,6 +80,7 @@ import VoiceBox from '@/components/VoiceBox';
 import G2 from '@antv/g2';
 import { View } from '@antv/data-set';
 import sharePicture from '@/assets/share_demo.png';
+import defaultAvatar from '@/assets/sharing_icon.png';
 import singer from '../../../data/singers';
 
 export default {
@@ -84,12 +92,25 @@ export default {
       sharePictureURL: '',
       isShowSharePicture: false,
       isShowMask: true,
-      singer
+      isShowInput: true,
+      singer,
+      username: '',
+      avatar: defaultAvatar
     };
   },
+  computed: {
+    isWeiXin() {
+      const ua = window.navigator.userAgent.toLowerCase();
+      return ua.match(/MicroMessenger/i) === 'micromessenger';
+    }
+  },
   methods: {
-    share() {
-      this.isShowSharePicture = true;
+    confirm() {
+      this.renderRadarMap();
+      this.isShowInput = false;
+      setTimeout(() => {
+        this.isLoading = false;
+      }, 3500);
     },
     renderRadarMap() {
       const data = [
@@ -164,9 +185,9 @@ export default {
       // 给动画留下缓冲时间
       setTimeout(() => {
         this.renderSharePicture(
-          '苟富贵，勿相汪',
+          this.username,
           this.singer.text,
-          'http://thirdwx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTKhRHicJPfiaraMP6CPXDdkRrFaJdAPEP7u9rBeiaVs5WnGXowmFVnWfb68kWSY5AbQNyqia9Cp6G3cDA/132',
+          this.avatar,
           chart.toDataURL(),
           this.singer.picture
         );
@@ -236,12 +257,15 @@ export default {
     }
   },
   created() {
-    setTimeout(() => {
-      this.isLoading = false;
-    }, 3500);
-  },
-  mounted() {
-    this.renderRadarMap();
+    if (this.isWeiXin) {
+      this.isShowInput = false;
+      this.$nextTick(() => {
+        this.renderRadarMap();
+      });
+      setTimeout(() => {
+        this.isLoading = false;
+      }, 3500);
+    }
   }
 };
 </script>
