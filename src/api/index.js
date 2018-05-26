@@ -2,7 +2,7 @@ import axios from 'axios';
 import { getLocal } from '@/utils/cache';
 
 const userInfo = axios.create({
-  baseURL: '/api/v1',
+  baseURL: 'api/v1',
   headers: {
     Authorization: getLocal('token')
   }

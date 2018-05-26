@@ -1,8 +1,10 @@
 <template>
-  <div class="loading-mask" v-if="show">
-    <img class="gif" src="../../assets/loading_gif.gif" alt="loading">
-    <img class="loading" src="../../assets/loading.png" alt="loading">
-  </div>
+  <transition name="fade">
+    <div class="loading-mask" v-if="show">
+      <img class="gif" src="../../assets/loading_gif.gif" alt="loading">
+      <img class="loading" src="../../assets/loading.png" alt="loading">
+    </div>
+  </transition>
 </template>
 
 <script>

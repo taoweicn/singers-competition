@@ -22,3 +22,11 @@
     margin-top: 68px;
   }
 }
+
+.fade-leave-to {
+  opacity: 0;
+}
+
+.fade-leave-active {
+  transition: all 0.5s;
+}
