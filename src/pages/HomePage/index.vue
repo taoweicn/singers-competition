@@ -1,6 +1,10 @@
 <template>
   <transition name="slide" mode="out-in">
     <div class="home">
+      <Preload
+        :images="resources.images"
+        :audios="resources.audios"
+      />
       <VoiceButton
         class="button"
         :mute="mute"
@@ -23,16 +27,19 @@
 
 <script>
 import VoiceButton from '@/components/VoiceButton';
+import Preload from '@/components/Preload';
 import { getLocal, setLocal } from '@/utils/cache';
 import { judgeStatus } from '@/api';
 import wxShare from '@/plugins/wx';
+import resources from './preload_resources';
 
 export default {
   name: 'HomePage',
-  components: { VoiceButton },
+  components: { VoiceButton, Preload },
   data() {
     return {
-      mute: getLocal('mute') == null ? true : getLocal('mute')
+      mute: getLocal('mute') == null ? true : getLocal('mute'),
+      resources
     };
   },
   methods: {

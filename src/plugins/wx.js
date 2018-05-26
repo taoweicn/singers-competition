@@ -3,7 +3,9 @@ import { getWXconfig } from '@/api';
 import shareIcon from '@/assets/sharing_icon.png';
 
 getWXconfig().then((res) => {
+  console.log(res);
   wx.config({
+    debug: true,
     ...res.data,
     jsApiList: [
       'onMenuShareTimeline',
@@ -23,12 +25,12 @@ const wxShareConfig = {
   imgUrl: `https://top-singers.hustonline.net/${shareIcon}` // 分享图标
 };
 
-const wxShare = (config = wxShareConfig) => {
+const wxShare = (config = wxShareConfig) => wx.ready(() => {
   wx.onMenuShareTimeline(config);
   wx.onMenuShareAppMessage(config);
   wx.onMenuShareQQ(config);
   wx.onMenuShareWeibo(config);
   wx.onMenuShareQZone(config);
-};
+});
 
 export default wxShare;
