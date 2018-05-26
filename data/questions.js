@@ -1,12 +1,11 @@
-import springImg from './questionImgs/question_long_spring.png';
-import summerImg from './questionImgs/question_long_summer.png';
-import autumnImg from './questionImgs/question_long_autumn.png';
-import winterImg from './questionImgs/question_long_winter.png';
-import audio2 from './questionAudios/2.mp3';
-import audio4 from './questionAudios/4.mp3';
-import audio6 from './questionAudios/6.mp3';
-import audio8 from './questionAudios/8.mp3';
-
+import springImg from './questions/picture/question_long_spring.png';
+import summerImg from './questions/picture/question_long_summer.png';
+import autumnImg from './questions/picture/question_long_autumn.png';
+import winterImg from './questions/picture/question_long_winter.png';
+import audio2 from './questions/audio/2.mp3';
+import audio4 from './questions/audio/4.mp3';
+import audio6 from './questions/audio/6.mp3';
+import audio8 from './questions/audio/8.mp3';
 
 const questions = [
   {

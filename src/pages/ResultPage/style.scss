@@ -80,7 +80,7 @@
     .background {
       position: relative;
       width: 666px;
-      padding: 241px 0 180px;
+      padding: 241px 0 185px;
       margin-top: 224px;
       background-color: #ebebeb;
       border-radius: 30px;
@@ -151,9 +151,9 @@
         min-height: 310px;
 
         .words {
-          padding: 16px 0 0 46px;
+          padding: 16px 0 0 36px;
           margin: 0;
-          width: 275px;
+          width: 280px;
           color: $textColor;
           font-size: 28px;
           letter-spacing: 2px;
@@ -182,10 +182,10 @@
 
       .prompt {
         position: absolute;
-        bottom: 22px;
+        bottom: 18px;
         left: 18px;
         width: 424px;
-        margin: 0 0 0 18px;
+        margin: 0 0 0 16px;
         color: $textColor;
         font-size: 22px;
         line-height: 31px;

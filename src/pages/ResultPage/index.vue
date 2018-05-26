@@ -33,13 +33,13 @@
           </div>
           <div class="report">
             <p class="words">
-              一共十种结果，随机随缘，一共十种结果，随机随缘，一共十种结果，随机随缘，一十种结果，随机随缘，一共十种结果，随机随缘，一共十种结果，随机随缘。
+              {{singer.text}}
             </p>
             <div id="radar"></div>
           </div>
           <div class="speaker">
             <img class="left" src="../../assets/result_user.png" alt="user">
-            <VoiceBox :time="5000" />
+            <VoiceBox :audioURL="singer.audio" />
           </div>
           <p class="prompt">
             （想看看是哪位十佳歌手为自己献唱？点击‘为TA打call’了解更多歌手信息！）
@@ -69,7 +69,7 @@ import VoiceBox from '@/components/VoiceBox';
 import G2 from '@antv/g2';
 import { View } from '@antv/data-set';
 import sharePicture from '@/assets/share_demo.png';
-import singerPicture from '../../../data/singers_picture';
+import singer from '../../../data/singers';
 
 export default {
   name: 'ResultPage',
@@ -79,7 +79,8 @@ export default {
       isLoading: true,
       sharePictureURL: '',
       isShowSharePicture: false,
-      isShowMask: true
+      isShowMask: true,
+      singer
     };
   },
   methods: {
@@ -160,10 +161,10 @@ export default {
       setTimeout(() => {
         this.renderSharePicture(
           '苟富贵，勿相汪',
-          '一共十种结果，随机随缘，一共十种结果，随机随缘，一十种结果，随机随缘，一共十种结果，随机随缘，一共十种结果，随机随缘。',
+          this.singer.text,
           'http://thirdwx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTKhRHicJPfiaraMP6CPXDdkRrFaJdAPEP7u9rBeiaVs5WnGXowmFVnWfb68kWSY5AbQNyqia9Cp6G3cDA/132',
           chart.toDataURL(),
-          singerPicture
+          this.singer.picture
         );
       }, 1000);
     },
