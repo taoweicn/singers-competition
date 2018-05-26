@@ -25,12 +25,12 @@ const wxShareConfig = {
   imgUrl: `https://weixin.bingyan-tech.hustonline.net/top-singers-index/${shareIcon}` // 分享图标
 };
 
-const wxShare = (config = wxShareConfig) => wx.ready(() => {
+const wxShare = (config = wxShareConfig) => {
   wx.onMenuShareTimeline(config);
   wx.onMenuShareAppMessage(config);
   wx.onMenuShareQQ(config);
   wx.onMenuShareWeibo(config);
   wx.onMenuShareQZone(config);
-});
+};
 
 export default wxShare;
