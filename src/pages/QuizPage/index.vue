@@ -1,7 +1,14 @@
 <template>
   <transition name="slide-up" mode="out-in">
     <div class="quiz">
-      <VoiceButton class="button" />
+      <transition name="fade">
+        <VoiceButton
+          class="button"
+          :mute="mute"
+          v-if="questions[currentQuestion].questionAudio"
+          @switchMute="switchMute"
+        />
+      </transition>
       <transition name="slide">
         <h1 class="question" v-if="show">
           {{ questions[currentQuestion].question }}
@@ -18,7 +25,10 @@
           @click.native.prevent="clickOption(index)"
         />
       </ul>
-      <autio>浏览器版本过低！</autio>
+      <audio
+        ref="audio"
+        :src="questions[currentQuestion].questionAudio"
+      >浏览器版本过低！</audio>
     </div>
   </transition>
 </template>
@@ -26,6 +36,7 @@
 <script>
 import Option from '@/components/Option';
 import VoiceButton from '@/components/VoiceButton';
+import { getLocal, setLocal } from '@/utils/cache';
 import questions from '../../../data/questions';
 
 export default {
@@ -33,6 +44,7 @@ export default {
   components: { Option, VoiceButton },
   data() {
     return {
+      mute: getLocal('mute') == null ? true : getLocal('mute'),
       questions,
       show: true,
       currentQuestion: 0,
@@ -41,7 +53,13 @@ export default {
     };
   },
   methods: {
+    switchMute() {
+      this.mute = !this.mute;
+      this.$refs.audio.muted = this.mute;
+      setLocal('mute', this.mute);
+    },
     clickOption(index) {
+      this.$refs.audio.pause();
       if (this.isAnswered) return; // 防止多次点击
       this.$set(this.optionsStatus, index, true);
       setTimeout(() => {
@@ -55,6 +73,11 @@ export default {
         this.currentQuestion += 1;
         setTimeout(() => {
           this.show = true;
+          if (this.questions[this.currentQuestion].questionAudio) {
+            setTimeout(() => {
+              this.$refs.audio.play();
+            }, 1000);
+          }
         }, 1000);
       } else {
         this.$router.replace('/result');
@@ -65,6 +88,9 @@ export default {
     optionsStatus() {
       this.isAnswered = this.optionsStatus.some(element => element);
     }
+  },
+  mounted() {
+    this.$refs.audio.muted = this.mute;
   }
 };
 </script>

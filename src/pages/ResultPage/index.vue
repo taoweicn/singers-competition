@@ -71,8 +71,6 @@ import { View } from '@antv/data-set';
 import sharePicture from '@/assets/share_demo.png';
 import singerPicture from '../../../data/singers_picture';
 
-console.log(singerPicture);
-
 export default {
   name: 'ResultPage',
   components: { VoiceBox },
@@ -186,8 +184,8 @@ export default {
         content.font = '28px/1.4 PingFang-SC-Bold';
         this.wrapText(content, resultText, 88, 480, 285, 39); // 绘制结果文字
         this.drawImage(content, avatarURL, 60, 344, 83, 83); // 绘制用户头像
-        this.drawImage(content, radarMapDataURL, 400, 474, 320, 250); // 绘制雷达图
-        this.drawImage(content, singersURL, 115, 878, 371, 205); // 绘制歌手图片
+        this.drawImage(content, radarMapDataURL, 380, 500, 330, 250); // 绘制雷达图
+        this.drawImage(content, singersURL, 132, 899, 371, 205); // 绘制歌手图片
         setTimeout(() => {
           this.sharePictureURL = canvas.toDataURL();
         }, 1000);
