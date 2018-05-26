@@ -49,10 +49,13 @@ export default {
     }
   },
   created() {
+    const token = window.location.search.split('=')[1];
+    if (!token) {
+      setLocal('token', token);
+    }
     judgeStatus().then((res) => {
-      console.log(res);
       if (!res.data.status) {
-        // window.location.href = res.data.data;
+        window.location.href = res.data.data.redirect_uri;
       } else {
         console.log(res.data);
       }

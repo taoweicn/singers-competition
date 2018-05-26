@@ -12,7 +12,7 @@ module.exports = {
     assetsPublicPath: '/',
     proxyTable: {
       '/api': {
-        target: 'https://top-singers.hustonline.net',
+        target: 'https://weixin.bingyan-tech.hustonline.net/top-singers-index/',
         secure: false,
         changeOrigin: true
       }

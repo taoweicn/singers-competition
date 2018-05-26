@@ -1,7 +1,11 @@
 import axios from 'axios';
+import { getLocal } from '@/utils/cache';
 
 const userInfo = axios.create({
-  baseURL: '/top-singers-index/api/v1'
+  baseURL: '/top-singers-index/api/v1',
+  headers: {
+    Authorization: getLocal('token')
+  }
 });
 
 export const judgeStatus = () => userInfo.get('user/status');
