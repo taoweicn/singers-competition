@@ -11,8 +11,8 @@ module.exports = {
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     proxyTable: {
-      '/api': {
-        target: 'https://weixin.bingyan-tech.hustonline.net/top-singers-index/',
+      '/top-singers-index/api/v1': {
+        target: 'https://weixin.bingyan-tech.hustonline.net/',
         secure: false,
         changeOrigin: true
       }

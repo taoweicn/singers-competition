@@ -50,7 +50,8 @@ export default {
   },
   created() {
     const token = window.location.search.split('=')[1];
-    if (!token) {
+    console.log(token);
+    if (token) {
       setLocal('token', token);
     }
     judgeStatus().then((res) => {

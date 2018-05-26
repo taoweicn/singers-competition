@@ -10,7 +10,7 @@ const userInfo = axios.create({
 
 export const judgeStatus = () => userInfo.get('user/status');
 
-export const getWXconfig = () => axios.get('/service/resources/signature', {
+export const getWXconfig = () => axios.get('service/resources/signature', {
   params: {
     url: window.location.href.split('#')[0]
   }
