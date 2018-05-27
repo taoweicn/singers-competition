@@ -269,7 +269,9 @@ export default {
         if (res.data.status) {
           this.username = res.data.data.nickname;
           this.avatar = res.data.data.headimgurl;
-          this.renderRadarMap();
+          setTimeout(() => {
+            this.renderRadarMap();
+          }, 500);
           setTimeout(() => {
             this.isLoading = false;
           }, 3500);
