@@ -1,12 +1,14 @@
 @import "../../constants/variables";
 
 .result {
-  position: relative;
+  position: absolute;
+  top: 0;
+  left: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100%;
-  height: 100vh;
+  height: 100%;
   background: $backgroundColor url("../../assets/home_downpattern.png") no-repeat center bottom/100%;
 
   .fade-out-leave-active {
