@@ -265,7 +265,6 @@ export default {
   },
   mounted() {
     judgeStatus().then((res) => {
-      console.log(res);
       if (res.data.status) {
         this.username = res.data.data.nickname;
         this.avatar = res.data.data.headimgurl;
