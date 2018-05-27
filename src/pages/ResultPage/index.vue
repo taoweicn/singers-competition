@@ -197,12 +197,14 @@ export default {
       }, 1000);
     },
     renderSharePicture(username, resultText, avatarURL, radarMapDataURL, singersURL) {
+      console.log(typeof username !== 'string');
       if (typeof username !== 'string') return;
       const background = new Image();
       background.src = sharePicture;
       const canvas = document.createElement('canvas');
       const content = canvas.getContext('2d');
       // 判断缓存
+      console.log(background.complete);
       if (background.complete) {
         canvas.width = background.width;
         canvas.height = background.height;
