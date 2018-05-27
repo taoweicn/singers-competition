@@ -95,7 +95,7 @@ export default {
       sharePictureURL: '',
       isShowSharePicture: false,
       isShowMask: true,
-      isShowInput: true,
+      isShowInput: false,
       singer,
       username: '',
       avatar: defaultAvatar
@@ -262,9 +262,8 @@ export default {
     if (this.isWeiXin) {
       judgeStatus().then((res) => {
         if (res.data.status) {
-          this.username = res.data.nickname;
-          this.avatar = res.data.headimgurl;
-          this.isShowInput = false;
+          this.username = res.data.data.nickname;
+          this.avatar = res.data.data.headimgurl;
           this.$nextTick(() => {
             this.renderRadarMap();
           });
@@ -273,6 +272,8 @@ export default {
           }, 3500);
         }
       });
+    } else {
+      this.isShowInput = true;
     }
   }
 };

@@ -53,7 +53,7 @@ export default {
     }
   },
   created() {
-    // if (!this.isWeiXin) return;
+    if (!this.isWeiXin) return;
     const token = window.location.search.split('=')[1];
     if (token) {
       setLocal('token', token);
