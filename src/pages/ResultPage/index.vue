@@ -98,7 +98,7 @@ export default {
       isShowMask: true,
       isShowInput: false,
       singer,
-      username: getLocal('username'),
+      username: getLocal('nickname'),
       avatar: getLocal('headimgurl') || defaultAvatar
     };
   },
@@ -267,10 +267,12 @@ export default {
     }
   },
   mounted() {
-    this.renderRadarMap();
-    setTimeout(() => {
-      this.isLoading = false;
-    }, 3500);
+    if (this.isWeiXin) {
+      this.renderRadarMap();
+      setTimeout(() => {
+        this.isLoading = false;
+      }, 3500);
+    }
   }
 };
 </script>
