@@ -197,13 +197,13 @@ export default {
       }, 1000);
     },
     renderSharePicture(username, resultText, avatarURL, radarMapDataURL, singersURL) {
-      alert(username);
       if (typeof username !== 'string') return;
       const background = new Image();
       background.src = sharePicture;
       const canvas = document.createElement('canvas');
       const content = canvas.getContext('2d');
-      if (this.isWeiXin) {
+      // 判断缓存
+      if (background.complete) {
         canvas.width = background.width;
         canvas.height = background.height;
         content.drawImage(background, 0, 0); // 绘制背景图片
@@ -219,26 +219,25 @@ export default {
         setTimeout(() => {
           this.sharePictureURL = canvas.toDataURL();
         }, 1000);
-        return;
+      } else {
+        background.onload = () => {
+          canvas.width = background.width;
+          canvas.height = background.height;
+          content.drawImage(background, 0, 0); // 绘制背景图片
+          content.fillStyle = '#fff';
+          content.font = '32px PingFang-SC-Bold';
+          content.fillText(username, 165, 375); // 绘制用户名
+          content.fillStyle = '#4f3e2f';
+          content.font = '28px/1.4 PingFang-SC-Bold';
+          this.wrapText(content, resultText, 88, 480, 285, 39); // 绘制结果文字
+          this.drawImage(content, avatarURL, 60, 344, 83, 83); // 绘制用户头像
+          this.drawImage(content, radarMapDataURL, 380, 500, 330, 250); // 绘制雷达图
+          this.drawImage(content, singersURL, 132, 899, 371, 205); // 绘制歌手图片
+          setTimeout(() => {
+            this.sharePictureURL = canvas.toDataURL();
+          }, 1000);
+        };
       }
-      background.onload = () => {
-        canvas.width = background.width;
-        canvas.height = background.height;
-        content.drawImage(background, 0, 0); // 绘制背景图片
-        content.fillStyle = '#fff';
-        content.font = '32px PingFang-SC-Bold';
-        content.fillText(username, 165, 375); // 绘制用户名
-        content.fillStyle = '#4f3e2f';
-        content.font = '28px/1.4 PingFang-SC-Bold';
-        this.wrapText(content, resultText, 88, 480, 285, 39); // 绘制结果文字
-        this.drawImage(content, avatarURL, 60, 344, 83, 83); // 绘制用户头像
-        this.drawImage(content, radarMapDataURL, 380, 500, 330, 250); // 绘制雷达图
-        this.drawImage(content, singersURL, 132, 899, 371, 205); // 绘制歌手图片
-        setTimeout(() => {
-          this.sharePictureURL = canvas.toDataURL();
-          alert('loaded');
-        }, 1000);
-      };
     },
     drawImage(content, url, x, y, width, height) {
       const image = new Image(width, height);
