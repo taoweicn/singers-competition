@@ -33,10 +33,10 @@ export const wxInit = async () => {
 
 
 const wxShareConfig = {
-  title: '测测哪位十佳歌手最合你的音乐品味', // 分享标题
-  desc: '我最匹配的十大歌手', // 分享描述
-  link: encodeURIComponent(window.location.href.split('#')[0]), // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
-  imgUrl: encodeURIComponent(window.location.href.split('#')[0]) + shareIcon // 分享图标
+  title: '最合我音乐品味的十佳歌手原来是ta！快来一起测测吧！', // 分享标题
+  desc: '测测哪位十佳歌手最合你的音乐品味', // 分享描述
+  link: encodeURIComponent('https://weixin.bingyan-tech.hustonline.net/top-singers-index/'), // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+  imgUrl: encodeURIComponent(`https://weixin.bingyan-tech.hustonline.net/top-singers-index/${shareIcon}`) // 分享图标
 };
 
 export const wxShare = (config = wxShareConfig) => {

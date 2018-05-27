@@ -37,6 +37,7 @@
 import Option from '@/components/Option';
 import VoiceButton from '@/components/VoiceButton';
 import { getLocal, setLocal } from '@/utils/cache';
+import { wxShare } from '@/plugins/wx';
 import questions from '../../../data/questions';
 
 export default {
@@ -98,6 +99,7 @@ export default {
   },
   mounted() {
     this.$refs.audio.muted = this.mute;
+    wxShare();
   }
 };
 </script>
