@@ -259,21 +259,22 @@ export default {
     }
   },
   created() {
+    if (!this.isWeiXin) {
+      this.isShowInput = true;
+    }
+  },
+  mounted() {
     if (this.isWeiXin) {
       judgeStatus().then((res) => {
         if (res.data.status) {
           this.username = res.data.data.nickname;
           this.avatar = res.data.data.headimgurl;
-          this.$nextTick(() => {
-            this.renderRadarMap();
-          });
+          this.renderRadarMap();
           setTimeout(() => {
             this.isLoading = false;
           }, 3500);
         }
       });
-    } else {
-      this.isShowInput = true;
     }
   }
 };
