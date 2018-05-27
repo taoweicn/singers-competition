@@ -61,8 +61,7 @@ export default {
     }
     judgeStatus().then((res) => {
       if (!res.data.status) {
-        console.log(res);
-        // window.location.href = res.data.data.redirect_uri;
+        window.location.href = res.data.data.redirect_uri;
       } else {
         console.log(res.data);
       }
