@@ -1,11 +1,15 @@
 import img1 from '@/assets/home_cassette.png';
-import img2 from '@/assets/question_downpattern.png';
-import img3 from '@/assets/result_pattern.png';
-import img4 from '@/assets/share_demo.png';
-import img5 from '../../../data/questions/picture/question_long_spring.png';
-import img6 from '../../../data/questions/picture/question_long_summer.png';
-import img7 from '../../../data/questions/picture/question_long_autumn.png';
-import img8 from '../../../data/questions/picture/question_long_winter.png';
+import img2 from '@/assets/home_downpattern.png';
+import img3 from '@/assets/question_downpattern.png';
+import img4 from '@/assets/question_uppattern.png';
+import img5 from '@/assets/result_arrow.png';
+import img6 from '@/assets/result_pattern.png';
+import img7 from '@/assets/result_saveit.png';
+import img8 from '@/assets/share_demo.png';
+import img9 from '../../../data/questions/picture/question_long_spring.png';
+import img10 from '../../../data/questions/picture/question_long_summer.png';
+import img11 from '../../../data/questions/picture/question_long_autumn.png';
+import img12 from '../../../data/questions/picture/question_long_winter.png';
 
 import audio1 from '../../../data/questions/audio/2.mp3';
 import audio2 from '../../../data/questions/audio/4.mp3';
@@ -22,7 +26,11 @@ export default {
     img5,
     img6,
     img7,
-    img8
+    img8,
+    img9,
+    img10,
+    img11,
+    img12
   ],
   audios: [
     audio1,

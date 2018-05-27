@@ -3,7 +3,6 @@
     <div class="home">
       <Preload
         :images="resources.images"
-        :audios="resources.audios"
       />
       <VoiceButton
         class="button"

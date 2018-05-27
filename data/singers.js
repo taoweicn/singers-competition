@@ -23,7 +23,7 @@ const singers = [
   {
     picture: singerPicture1,
     audio: singerAudio1,
-    text: '你总是看起来很闷，带着笑，或是沉默。但是，你看得见梧桐叶上最纤细的阳光，嗅得到雨里最悲伤的味道，写得了最感性的诗行，内心丰富而热情。当你听见这两位少年最美的那段和声时，也许会心里痒痒，让自己骚气外露一点点？'
+    text: '你总是看起来很闷，带着笑，或是沉默。但是，你看得见梧桐叶上最纤细的阳光，嗅得到雨里最悲伤的味道，写得了最感性的诗行。当你听见这两位少年最美的那段和声时，也许会心里痒痒，让自己骚气外露一点点？'
   },
   {
     picture: singerPicture2,
@@ -72,4 +72,4 @@ const singers = [
   }
 ];
 
-export default singers[0];
+export default singers[Math.floor(Math.random() * 10)];

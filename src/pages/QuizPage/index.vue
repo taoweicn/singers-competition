@@ -10,7 +10,7 @@
         />
       </transition>
       <transition name="slide">
-        <h1 class="question" v-if="show">
+        <h1 class="question" v-if="show" @click="replay">
           {{ questions[currentQuestion].question }}
         </h1>
       </transition>
@@ -57,6 +57,13 @@ export default {
       this.mute = !this.mute;
       this.$refs.audio.muted = this.mute;
       setLocal('mute', this.mute);
+    },
+    replay() {
+      if (this.questions[this.currentQuestion].questionAudio) {
+        this.$refs.audio.pause();
+        this.$refs.audio.currentTime = 0;
+        this.$refs.audio.play();
+      }
     },
     clickOption(index) {
       if (this.isAnswered) return; // 防止多次点击
