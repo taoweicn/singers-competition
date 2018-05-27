@@ -29,7 +29,6 @@ import VoiceButton from '@/components/VoiceButton';
 import Preload from '@/components/Preload';
 import { getLocal, setLocal } from '@/utils/cache';
 import { judgeStatus } from '@/api';
-import { wxShare } from '@/plugins/wx';
 import resources from './preload_resources';
 
 export default {
@@ -71,7 +70,6 @@ export default {
     Array.prototype.forEach.call(imgs, (img) => {
       img.addEventListener('click', e => e.preventDefault());
     });
-    wxShare();
   }
 };
 </script>
