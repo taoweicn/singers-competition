@@ -1,5 +1,5 @@
 export function setLocal(name, content) {
-  if (!name && typeof name !== 'string' && !content) return;
+  if (!name && typeof name !== 'string' && content != null) return;
   localStorage.setItem(name, JSON.stringify(content));
 }
 
@@ -14,7 +14,7 @@ export function removeLocal(name) {
 }
 
 export function setSession(name, content) {
-  if (!name && typeof name !== 'string' && !content) return;
+  if (!name && typeof name !== 'string' && content != null) return;
   sessionStorage.setItem(name, JSON.stringify(content));
 }
 

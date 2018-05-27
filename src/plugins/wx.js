@@ -25,8 +25,12 @@ const wxShareConfig = {
   imgUrl: `https://weixin.bingyan-tech.hustonline.net/top-singers-index/${shareIcon}` // 分享图标
 };
 
-wx.error(() => {
+wx.ready(() => {
   console.log(1);
+});
+
+wx.error(() => {
+  console.log(2);
 });
 
 const wxShare = (config = wxShareConfig) => {

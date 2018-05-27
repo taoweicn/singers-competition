@@ -16,13 +16,15 @@
           </footer>
         </div>
       </transition>
-      <div v-if="isShowInput" class="input-container">
-        <div class="modal">
-          <img src="../../assets/write_your_name.png" alt="write_your_name">
-          <input v-model="username" type="text">
+      <transition name="fade-out">
+        <div v-if="isShowInput" class="input-container">
+          <div class="modal">
+            <img src="../../assets/write_your_name.png" alt="write_your_name">
+            <input v-model="username" type="text">
+          </div>
+          <button class="confirm-button" @click="confirm"></button>
         </div>
-        <button class="confirm-button" @click="confirm"></button>
-      </div>
+      </transition>
       <main v-show="!isShowInput" class="main">
         <section class="background">
           <header class="header"></header>
@@ -79,6 +81,7 @@
 import VoiceBox from '@/components/VoiceBox';
 import G2 from '@antv/g2';
 import { View } from '@antv/data-set';
+import { judgeStatus } from '@/api';
 import sharePicture from '@/assets/share_demo.png';
 import defaultAvatar from '@/assets/sharing_icon.png';
 import singer from '../../../data/singers';
@@ -258,13 +261,19 @@ export default {
   },
   created() {
     if (this.isWeiXin) {
-      this.isShowInput = false;
-      this.$nextTick(() => {
-        this.renderRadarMap();
+      judgeStatus().then((res) => {
+        if (res.data.status) {
+          this.username = res.data.nickname;
+          this.avatar = res.data.headimgurl;
+          this.isShowInput = false;
+          this.$nextTick(() => {
+            this.renderRadarMap();
+          });
+          setTimeout(() => {
+            this.isLoading = false;
+          }, 3500);
+        }
       });
-      setTimeout(() => {
-        this.isLoading = false;
-      }, 3500);
     }
   }
 };

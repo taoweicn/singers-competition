@@ -42,6 +42,12 @@ export default {
       resources
     };
   },
+  computed: {
+    isWeiXin() {
+      const ua = window.navigator.userAgent.toLowerCase();
+      return ua.match(/MicroMessenger/i) === 'micromessenger';
+    }
+  },
   methods: {
     switchMute() {
       this.mute = !this.mute;
@@ -49,8 +55,8 @@ export default {
     }
   },
   created() {
+    if (!this.isWeiXin) return;
     const token = window.location.search.split('=')[1];
-    console.log(token);
     if (token) {
       setLocal('token', token);
     }
@@ -61,7 +67,6 @@ export default {
         console.log(res.data);
       }
     });
-    wxShare();
   },
   mounted() {
     const imgs = document.getElementsByTagName('img');
