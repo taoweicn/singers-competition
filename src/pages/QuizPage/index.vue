@@ -5,7 +5,7 @@
         <VoiceButton
           class="button"
           :mute="mute"
-          v-if="questions[currentQuestion].questionAudio"
+          v-if="isShowVoiceButton"
           @switchMute="switchMute"
         />
       </transition>
@@ -53,6 +53,12 @@ export default {
       isAnswered: false
     };
   },
+  computed: {
+    isShowVoiceButton() {
+      return this.questions[this.currentQuestion].questionAudio
+        && this.questions[this.currentQuestion].questionAudio.indexOf('empty') < 0;
+    }
+  },
   methods: {
     switchMute() {
       this.mute = !this.mute;
@@ -82,9 +88,9 @@ export default {
         this.currentQuestion += 1;
         setTimeout(() => {
           this.show = true;
-          // if (this.questions[this.currentQuestion].questionAudio) {
-          this.$refs.audio.play();
-          // }
+          if (this.questions[this.currentQuestion].questionAudio) {
+            this.$refs.audio.play();
+          }
         }, 1000);
       } else {
         this.$router.replace('/result');

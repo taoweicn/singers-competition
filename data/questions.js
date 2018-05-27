@@ -6,6 +6,7 @@ import audio5 from './questions/audio/5.mp3';
 import audio6 from './questions/audio/6.mp3';
 import audio7 from './questions/audio/7.mp3';
 import audio8 from './questions/audio/8.mp3';
+import empty from './questions/audio/empty.mp3';
 
 const questions = [
   {
@@ -53,6 +54,7 @@ const questions = [
     ]
   }, {
     question: '深夜的华科，有人放声高歌扰民，你会__',
+    questionAudio: empty,
     options: [
       {
         text: 'A.戴上耳机，心中默默吐槽'
