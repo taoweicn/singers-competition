@@ -11,6 +11,7 @@
     <audio
       ref="audio"
       :src="audioURL"
+      preload="auto"
     >浏览器版本过低！</audio>
   </div>
 </template>

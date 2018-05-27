@@ -5,7 +5,8 @@
         <VoiceButton
           class="button"
           :mute="mute"
-          v-if="questions[currentQuestion].questionAudio"
+          v-if="questions[currentQuestion].questionAudio
+          && questions[currentQuestion].questionAudio !== 'empty'"
           @switchMute="switchMute"
         />
       </transition>
@@ -28,6 +29,7 @@
       <audio
         ref="audio"
         :src="questions[currentQuestion].questionAudio"
+        preload="auto"
       >浏览器版本过低！</audio>
     </div>
   </transition>
@@ -72,21 +74,22 @@ export default {
       setTimeout(() => {
         this.show = false;
         this.$set(this.optionsStatus, index, false);
-        /* 展示下一个选项 */
-        if (this.currentQuestion < this.questions.length - 1) {
-          this.currentQuestion += 1;
-          setTimeout(() => {
-            this.show = true;
-            if (this.questions[this.currentQuestion].questionAudio) {
-              this.$refs.audio.play();
-            }
-          }, 1000);
-        } else {
-          this.$router.replace('/result');
-        }
-        /* 本来这一块是一个方法，但因为iphone必须点击才能播放，所以放到一起，很不优雅 */
+        this.showNextQuestion();
       }, 200);
       window._czc.push([ '_trackEvent', '选项按钮', '回答问题' ]) // eslint-disable-line
+    },
+    showNextQuestion() {
+      if (this.currentQuestion < this.questions.length - 1) {
+        this.currentQuestion += 1;
+        setTimeout(() => {
+          this.show = true;
+          if (this.questions[this.currentQuestion].questionAudio) {
+            this.$refs.audio.play();
+          }
+        }, 1000);
+      } else {
+        this.$router.replace('/result');
+      }
     }
   },
   watch: {
