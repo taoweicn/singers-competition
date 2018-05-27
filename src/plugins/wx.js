@@ -24,10 +24,10 @@ export default async () => {
       console.log('wx ready');
       console.log(shareIcon);
       const wxShareConfig = {
-        title: '绝了', // 分享标题
-        desc: '绝了', // 分享描述
-        link: encodeURIComponent('https://weixin.bingyan-tech.hustonline.net/top-singers-index'), // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
-        imgUrl: encodeURIComponent(`https://weixin.bingyan-tech.hustonline.net${shareIcon}`) // 分享图标
+        title: '最合我音乐品味的十佳歌手原来是ta！快来一起测测吧！', // 分享标题
+        desc: '测测哪位十佳歌手最合你的音乐品味', // 分享描述
+        link: 'https://weixin.bingyan-tech.hustonline.net/top-singers-index', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+        imgUrl: `https://weixin.bingyan-tech.hustonline.net${shareIcon}` // 分享图标
       };
       wx.onMenuShareTimeline(wxShareConfig);
       wx.onMenuShareAppMessage(wxShareConfig);
