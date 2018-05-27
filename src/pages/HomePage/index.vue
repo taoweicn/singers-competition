@@ -14,7 +14,7 @@
       <div class="word-container">
         <img class="word" src="../../assets/home_font.png" alt="cover">
       </div>
-      <router-link to="/quiz">
+      <router-link to="/quiz" @click="track">
         <button class="begin-button"></button>
       </router-link>
       <footer class="copyright">
@@ -49,6 +49,9 @@ export default {
     switchMute() {
       this.mute = !this.mute;
       setLocal('mute', this.mute);
+    },
+    track() {
+      window._czc.push([ '_trackEvent', '答题按钮', '开始答题' ]) // eslint-disable-line
     }
   },
   created() {

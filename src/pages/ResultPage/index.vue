@@ -51,16 +51,14 @@
             <VoiceBox :audioURL="singer.audio" />
           </div>
           <p class="prompt">
-            （想看看是哪位十佳歌手为自己献唱？点击‘为TA打call’了解更多歌手信息！）
+            （想看看是哪位十佳歌手为自己献唱？点击‘分享给好友’查看歌手信息！）
           </p>
         </section>
         <section class="buttons">
-          <a href="https://music.163.com/independ/vote/59005">
-            <button>
-            为TA打call
-            </button>
+          <a href="https://music.163.com/independ/vote/59005" @click="vote">
+            <button>为TA打call</button>
           </a>
-          <button @click="isShowSharePicture = true">分享给好友</button>
+          <button @click="share">分享给好友</button>
         </section>
       </main>
       <footer class="copyright">
@@ -107,6 +105,13 @@ export default {
     }
   },
   methods: {
+    share() {
+      this.isShowSharePicture = true;
+      window._czc.push([ '_trackEvent', '分享按钮', '分享给好友' ]) // eslint-disable-line
+    },
+    vote() {
+      window._czc.push([ '_trackEvent', '投票按钮', '为ta打call' ]) // eslint-disable-line
+    },
     confirm() {
       this.isShowInput = false;
       this.renderRadarMap();

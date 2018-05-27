@@ -74,6 +74,7 @@ export default {
         this.$set(this.optionsStatus, index, false);
         this.showNextQuestion();
       }, 200);
+      window._czc.push([ '_trackEvent', '选项按钮', '回答问题' ]) // eslint-disable-line
     },
     showNextQuestion() {
       if (this.currentQuestion < this.questions.length - 1) {
