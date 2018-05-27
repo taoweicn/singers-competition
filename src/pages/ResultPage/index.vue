@@ -82,6 +82,7 @@ import VoiceBox from '@/components/VoiceBox';
 import G2 from '@antv/g2';
 import { View } from '@antv/data-set';
 import { judgeStatus } from '@/api';
+import wxInit from '@/plugins/wx';
 import sharePicture from '@/assets/share_demo.png';
 import defaultAvatar from '@/assets/result_user.png';
 import singer from '../../../data/singers';
@@ -262,6 +263,7 @@ export default {
     if (!this.isWeiXin) {
       this.isShowInput = true;
     }
+    wxInit();
   },
   mounted() {
     judgeStatus().then((res) => {

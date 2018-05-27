@@ -29,6 +29,7 @@ import VoiceButton from '@/components/VoiceButton';
 import Preload from '@/components/Preload';
 import { getLocal, setLocal } from '@/utils/cache';
 import { judgeStatus } from '@/api';
+import wxInit from '@/plugins/wx';
 import resources from './preload_resources';
 
 export default {
@@ -53,6 +54,7 @@ export default {
   },
   created() {
     if (!this.isWeiXin) return;
+    wxInit();
     const token = window.location.search.split('=')[1];
     if (token) {
       setLocal('token', token);
