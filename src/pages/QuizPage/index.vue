@@ -5,7 +5,7 @@
         <VoiceButton
           class="button"
           :mute="mute"
-          v-if="isShowVoiceButton"
+          v-if="questions[currentQuestion].questionAudio"
           @switchMute="switchMute"
         />
       </transition>
@@ -52,12 +52,6 @@ export default {
       optionsStatus: [],
       isAnswered: false
     };
-  },
-  computed: {
-    isShowVoiceButton() {
-      return this.questions[this.currentQuestion].questionAudio
-        && this.questions[this.currentQuestion].questionAudio.indexOf('empty') < 0;
-    }
   },
   methods: {
     switchMute() {
