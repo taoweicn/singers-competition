@@ -7,7 +7,10 @@ export const wxInit = async () => {
     const res = await getWXconfig();
     wx.config({
       debug: false,
-      ...res.data,
+      appId: res.data.appId,
+      timestamp: res.data.timestamp,
+      nonceStr: res.data.nonce_str,
+      signature: res.data.signature,
       jsApiList: [
         'onMenuShareTimeline',
         'onMenuShareAppMessage',

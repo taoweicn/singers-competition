@@ -108,8 +108,8 @@ export default {
   },
   methods: {
     confirm() {
-      this.renderRadarMap();
       this.isShowInput = false;
+      this.renderRadarMap();
       setTimeout(() => {
         this.isLoading = false;
       }, 3500);
@@ -264,20 +264,16 @@ export default {
     }
   },
   mounted() {
-    if (this.isWeiXin) {
-      judgeStatus().then((res) => {
-        if (res.data.status) {
-          this.username = res.data.data.nickname;
-          this.avatar = res.data.data.headimgurl;
-          setTimeout(() => {
-            this.renderRadarMap();
-          }, 500);
-          setTimeout(() => {
-            this.isLoading = false;
-          }, 3500);
-        }
-      });
-    }
+    judgeStatus().then((res) => {
+      if (res.data.status) {
+        this.username = res.data.data.nickname;
+        this.avatar = res.data.data.headimgurl;
+        this.renderRadarMap();
+        setTimeout(() => {
+          this.isLoading = false;
+        }, 3500);
+      }
+    });
   }
 };
 </script>
