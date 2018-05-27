@@ -197,7 +197,8 @@ export default {
       }, 1000);
     },
     renderSharePicture(username, resultText, avatarURL, radarMapDataURL, singersURL) {
-      alert(typeof username !== 'string');
+      alert(username);
+      alert(avatarURL);
       if (typeof username !== 'string') return;
       const background = new Image();
       background.src = sharePicture;
@@ -205,7 +206,6 @@ export default {
       const content = canvas.getContext('2d');
       // 判断缓存
       alert(background.complete);
-      alert(background);
       if (background.complete) {
         console.log(background);
         canvas.width = background.width;
@@ -222,9 +222,11 @@ export default {
         this.drawImage(content, singersURL, 132, 899, 371, 205); // 绘制歌手图片
         setTimeout(() => {
           this.sharePictureURL = canvas.toDataURL();
+          alert(this.sharePictureURL);
         }, 1000);
       } else {
         background.onload = () => {
+          alert('loaded');
           canvas.width = background.width;
           canvas.height = background.height;
           content.drawImage(background, 0, 0); // 绘制背景图片
@@ -239,7 +241,7 @@ export default {
           this.drawImage(content, singersURL, 132, 899, 371, 205); // 绘制歌手图片
           setTimeout(() => {
             this.sharePictureURL = canvas.toDataURL();
-            alert('loaded');
+            alert(this.sharePictureURL);
           }, 1000);
         };
       }
@@ -296,9 +298,9 @@ export default {
         if (res.data.status) {
           this.username = res.data.data.nickname;
           this.avatar = res.data.data.headimgurl;
+          alert(this.username);
+          alert(this.avatar);
           this.$nextTick(() => {
-            alert(this.username);
-            alert(this.avatar);
             this.renderRadarMap();
           });
           setTimeout(() => {
