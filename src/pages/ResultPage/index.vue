@@ -211,7 +211,7 @@ export default {
         content.fillStyle = '#4f3e2f';
         content.font = '28px/1.4 PingFang-SC-Bold';
         this.wrapText(content, resultText, 88, 480, 285, 39); // 绘制结果文字
-        // this.drawImage(content, avatarURL, 60, 344, 83, 83); // 绘制用户头像
+        this.drawImage(content, avatarURL, 60, 344, 83, 83); // 绘制用户头像
         this.drawImage(content, radarMapDataURL, 380, 500, 330, 250); // 绘制雷达图
         this.drawImage(content, singersURL, 132, 899, 371, 205); // 绘制歌手图片
         setTimeout(() => {
