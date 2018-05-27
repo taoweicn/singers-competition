@@ -2,9 +2,9 @@ import springImg from './questions/picture/question_long_spring.png';
 import summerImg from './questions/picture/question_long_summer.png';
 import autumnImg from './questions/picture/question_long_autumn.png';
 import winterImg from './questions/picture/question_long_winter.png';
-import audio2 from './questions/audio/2.mp3';
-import audio4 from './questions/audio/4.mp3';
+import audio5 from './questions/audio/5.mp3';
 import audio6 from './questions/audio/6.mp3';
+import audio7 from './questions/audio/7.mp3';
 import audio8 from './questions/audio/8.mp3';
 
 const questions = [
@@ -26,20 +26,6 @@ const questions = [
       }
     ]
   }, {
-    question: '听到这首歌\n会想象自己身处什么场景中',
-    questionAudio: audio2,
-    options: [
-      {
-        text: 'A.梧桐絮飘飞的操场'
-      }, {
-        text: 'B.西小门外嘈杂的鲁磨路'
-      }, {
-        text: 'C.深夜清冷的绝望坡'
-      }, {
-        text: 'D.寒风凌列的东九楼顶'
-      }
-    ]
-  }, {
     question: '你在ktv唱歌的姿势一般是',
     options: [
       {
@@ -50,20 +36,6 @@ const questions = [
         text: 'C.在凳子上捧着话筒深情唱'
       }, {
         text: 'D.只听别人唱'
-      }
-    ]
-  }, {
-    question: '听到这首歌你第一个想到的人是谁？',
-    questionAudio: audio4,
-    options: [
-      {
-        text: 'A.那个你不敢上前接触的ta'
-      }, {
-        text: 'B.那个你挽留不住的ta'
-      }, {
-        text: 'C.现在在你身边的ta'
-      }, {
-        text: 'D.时常在你梦里出现的ta'
       }
     ]
   }, {
@@ -80,20 +52,6 @@ const questions = [
       }
     ]
   }, {
-    question: '听到这首歌会觉得自己沉浸在__中',
-    questionAudio: audio6,
-    options: [
-      {
-        text: 'A.校车即将开动的欣慰'
-      }, {
-        text: 'B.菘停韵贺的愉悦'
-      }, {
-        text: 'C.吃到南三门鸡蛋灌饼的幸福'
-      }, {
-        text: 'D.十佳歌手大赛现场的兴奋'
-      }
-    ]
-  }, {
     question: '深夜的华科，有人放声高歌扰民，你会__',
     options: [
       {
@@ -104,6 +62,48 @@ const questions = [
         text: 'C.和TA一起对唱'
       }, {
         text: 'D.这么过分一定发QQ空间/朋友圈'
+      }
+    ]
+  }, {
+    question: '听到这首歌\n会想象自己身处什么场景中',
+    questionAudio: audio5,
+    options: [
+      {
+        text: 'A.梧桐絮飘飞的操场'
+      }, {
+        text: 'B.西小门外嘈杂的鲁磨路'
+      }, {
+        text: 'C.深夜清冷的绝望坡'
+      }, {
+        text: 'D.寒风凌列的东九楼顶'
+      }
+    ]
+  }, {
+    question: '听到这首歌你第一个想到的人是谁？',
+    questionAudio: audio6,
+    options: [
+      {
+        text: 'A.那个你不敢上前接触的ta'
+      }, {
+        text: 'B.那个你挽留不住的ta'
+      }, {
+        text: 'C.现在在你身边的ta'
+      }, {
+        text: 'D.时常在你梦里出现的ta'
+      }
+    ]
+  }, {
+    question: '听到这首歌会觉得自己沉浸在__中',
+    questionAudio: audio7,
+    options: [
+      {
+        text: 'A.校车即将开动的欣慰'
+      }, {
+        text: 'B.菘停韵贺的愉悦'
+      }, {
+        text: 'C.吃到南三门鸡蛋灌饼的幸福'
+      }, {
+        text: 'D.十佳歌手大赛现场的兴奋'
       }
     ]
   }, {

@@ -11,9 +11,9 @@ import img10 from '../../../data/questions/picture/question_long_summer.png';
 import img11 from '../../../data/questions/picture/question_long_autumn.png';
 import img12 from '../../../data/questions/picture/question_long_winter.png';
 
-import audio1 from '../../../data/questions/audio/2.mp3';
-import audio2 from '../../../data/questions/audio/4.mp3';
-import audio3 from '../../../data/questions/audio/6.mp3';
+import audio1 from '../../../data/questions/audio/5.mp3';
+import audio2 from '../../../data/questions/audio/6.mp3';
+import audio3 from '../../../data/questions/audio/7.mp3';
 import audio4 from '../../../data/questions/audio/8.mp3';
 
 

@@ -53,14 +53,15 @@ export default {
     }
   },
   created() {
-    if (!this.isWeiXin) return;
+    // if (!this.isWeiXin) return;
     const token = window.location.search.split('=')[1];
     if (token) {
       setLocal('token', token);
     }
     judgeStatus().then((res) => {
       if (!res.data.status) {
-        window.location.href = res.data.data.redirect_uri;
+        console.log(res);
+        // window.location.href = res.data.data.redirect_uri;
       } else {
         console.log(res.data);
       }

@@ -12,6 +12,6 @@ export const judgeStatus = () => userInfo.get('/user/status');
 
 export const getWXconfig = () => axios.get('/service/resources/signature', {
   params: {
-    url: encodeURIComponent(window.location.href.split('#')[0])
+    url: window.location.href.split('#')[0]
   }
 });
