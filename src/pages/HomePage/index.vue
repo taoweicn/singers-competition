@@ -43,8 +43,7 @@ export default {
   },
   computed: {
     isWeiXin() {
-      const ua = window.navigator.userAgent.toLowerCase();
-      return ua.match(/MicroMessenger/i) === 'micromessenger';
+      return /micromessenger/i.test(navigator.userAgent);
     }
   },
   methods: {

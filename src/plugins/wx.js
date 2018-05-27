@@ -6,7 +6,7 @@ export const wxInit = async () => {
   try {
     const res = await getWXconfig();
     wx.config({
-      debug: true,
+      debug: false,
       ...res.data,
       jsApiList: [
         'onMenuShareTimeline',
