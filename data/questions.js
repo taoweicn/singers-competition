@@ -53,7 +53,6 @@ const questions = [
     ]
   }, {
     question: '深夜的华科，有人放声高歌扰民，你会__',
-    questionAudio: 'empty',
     options: [
       {
         text: 'A.戴上耳机，心中默默吐槽'

@@ -127,6 +127,8 @@ export default {
         { item: '装逼', score: Math.floor(Math.random() * 3) + 1 },
         { item: '孤独', score: Math.floor(Math.random() * 3) + 1 }
       ];
+      // 随机一个是满的
+      data[Math.floor(Math.random() * 5)] = 3;
       const dv = new View().source(data);
       dv.transform({
         type: 'fold',

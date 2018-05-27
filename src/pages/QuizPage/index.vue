@@ -5,8 +5,7 @@
         <VoiceButton
           class="button"
           :mute="mute"
-          v-if="questions[currentQuestion].questionAudio
-          && questions[currentQuestion].questionAudio !== 'empty'"
+          v-if="questions[currentQuestion].questionAudio"
           @switchMute="switchMute"
         />
       </transition>
@@ -83,9 +82,9 @@ export default {
         this.currentQuestion += 1;
         setTimeout(() => {
           this.show = true;
-          if (this.questions[this.currentQuestion].questionAudio) {
-            this.$refs.audio.play();
-          }
+          // if (this.questions[this.currentQuestion].questionAudio) {
+          this.$refs.audio.play();
+          // }
         }, 1000);
       } else {
         this.$router.replace('/result');
