@@ -56,7 +56,7 @@ export default {
   mounted() {
     const audio = new Audio();
     audio.src = this.audioURL;
-    audio.onloadedmetadata = () => {
+    audio.onloadeddata = () => {
       this.time = this.$refs.audio.duration;
     };
   }

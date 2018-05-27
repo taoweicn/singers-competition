@@ -81,8 +81,8 @@
 import VoiceBox from '@/components/VoiceBox';
 import G2 from '@antv/g2';
 import { View } from '@antv/data-set';
-import { judgeStatus } from '@/api';
 import wxInit from '@/plugins/wx';
+import { getLocal } from '@/utils/cache';
 import sharePicture from '@/assets/share_demo.png';
 import defaultAvatar from '@/assets/result_user.png';
 import singer from '../../../data/singers';
@@ -98,8 +98,8 @@ export default {
       isShowMask: true,
       isShowInput: false,
       singer,
-      username: '',
-      avatar: defaultAvatar
+      username: getLocal('username'),
+      avatar: getLocal('headimgurl') || defaultAvatar
     };
   },
   computed: {
@@ -262,20 +262,15 @@ export default {
   created() {
     if (!this.isWeiXin) {
       this.isShowInput = true;
+    } else {
+      wxInit();
     }
-    wxInit();
   },
   mounted() {
-    judgeStatus().then((res) => {
-      if (res.data.status) {
-        this.username = res.data.data.nickname;
-        this.avatar = res.data.data.headimgurl;
-        this.renderRadarMap();
-        setTimeout(() => {
-          this.isLoading = false;
-        }, 3500);
-      }
-    });
+    this.renderRadarMap();
+    setTimeout(() => {
+      this.isLoading = false;
+    }, 3500);
   }
 };
 </script>
