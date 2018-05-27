@@ -47,9 +47,11 @@
     transition: all .6s;
   }
   .slide-enter {
+    opacity: 0;
     transform: translateX(100vw);
   }
   .slide-leave-to {
+    opacity: 0;
     transform: translateX(-100vw);
   }
 

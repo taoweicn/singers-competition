@@ -2,21 +2,32 @@ import wx from 'weixin-js-sdk';
 import { getWXconfig } from '@/api';
 import shareIcon from '@/assets/sharing_icon.png';
 
-getWXconfig().then((res) => {
-  console.log(res);
-  wx.config({
-    debug: true,
-    ...res.data,
-    jsApiList: [
-      'onMenuShareTimeline',
-      'onMenuShareAppMessage',
-      'onMenuShareQQ',
-      'onMenuShareWeibo',
-      'onMenuShareQZone',
-      'previewImage'
-    ]
-  });
-});
+export const wxInit = async () => {
+  try {
+    const res = await getWXconfig();
+    wx.config({
+      debug: true,
+      ...res.data,
+      jsApiList: [
+        'onMenuShareTimeline',
+        'onMenuShareAppMessage',
+        'onMenuShareQQ',
+        'onMenuShareWeibo',
+        'onMenuShareQZone',
+        'previewImage'
+      ]
+    });
+    wx.ready(() => {
+      console.log('wx ready');
+    });
+    wx.error(() => {
+      console.log('wx error');
+    });
+  } catch (e) {
+    console.log(e);
+  }
+};
+
 
 const wxShareConfig = {
   title: '测测哪位十佳歌手最合你的音乐品味', // 分享标题
@@ -25,20 +36,10 @@ const wxShareConfig = {
   imgUrl: `https://weixin.bingyan-tech.hustonline.net/top-singers-index/${shareIcon}` // 分享图标
 };
 
-wx.ready(() => {
-  console.log(1);
-});
-
-wx.error(() => {
-  console.log(2);
-});
-
-const wxShare = (config = wxShareConfig) => {
+export const wxShare = (config = wxShareConfig) => {
   wx.onMenuShareTimeline(config);
   wx.onMenuShareAppMessage(config);
   wx.onMenuShareQQ(config);
   wx.onMenuShareWeibo(config);
   wx.onMenuShareQZone(config);
 };
-
-export default wxShare;

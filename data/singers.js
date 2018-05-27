@@ -72,4 +72,4 @@ const singers = [
   }
 ];
 
-export default singers[Math.floor(Math.random() * 10)];
+export default singers[0];
