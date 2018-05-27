@@ -197,7 +197,7 @@ export default {
       }, 1000);
     },
     renderSharePicture(username, resultText, avatarURL, radarMapDataURL, singersURL) {
-      if (typeof username !== 'string') return;
+      // if (typeof username !== 'string') return;
       const background = new Image();
       background.src = sharePicture;
       const canvas = document.createElement('canvas');
