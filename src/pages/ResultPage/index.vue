@@ -197,6 +197,7 @@ export default {
       }, 1000);
     },
     renderSharePicture(username, resultText, avatarURL, radarMapDataURL, singersURL) {
+      alert(typeof username, username);
       // if (typeof username !== 'string') return;
       const background = new Image();
       background.src = sharePicture;
@@ -217,6 +218,7 @@ export default {
         this.drawImage(content, singersURL, 132, 899, 371, 205); // 绘制歌手图片
         setTimeout(() => {
           this.sharePictureURL = canvas.toDataURL();
+          alert('loaded');
         }, 1000);
       };
     },
