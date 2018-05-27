@@ -11,12 +11,12 @@ Vue.config.productionTip = false;
     await wxInit();
   } catch (e) {
     console.log(e);
+  } finally {
+    /* eslint-disable no-new */
+    new Vue({
+      el: '#app',
+      router,
+      render: h => h(App)
+    });
   }
 })();
-
-/* eslint-disable no-new */
-new Vue({
-  el: '#app',
-  router,
-  render: h => h(App)
-});
