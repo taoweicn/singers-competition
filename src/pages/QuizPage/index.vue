@@ -37,7 +37,6 @@
 import Option from '@/components/Option';
 import VoiceButton from '@/components/VoiceButton';
 import { getLocal, setLocal } from '@/utils/cache';
-import wxInit from '@/plugins/wx';
 import questions from '../../../data/questions';
 
 export default {
@@ -96,9 +95,6 @@ export default {
     optionsStatus() {
       this.isAnswered = this.optionsStatus.some(element => element);
     }
-  },
-  created() {
-    wxInit();
   },
   mounted() {
     this.$refs.audio.muted = this.mute;

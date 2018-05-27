@@ -81,8 +81,7 @@
 import VoiceBox from '@/components/VoiceBox';
 import G2 from '@antv/g2';
 import { View } from '@antv/data-set';
-import wxInit from '@/plugins/wx';
-import { judgeStatus } from '@/api';
+import { getLocal } from '@/utils/cache';
 import sharePicture from '@/assets/share_demo.png';
 import defaultAvatar from '@/assets/result_user.png';
 import singer from '../../../data/singers';
@@ -113,7 +112,7 @@ export default {
       this.renderRadarMap();
       setTimeout(() => {
         this.isLoading = false;
-      }, 3500);
+      }, 3000);
     },
     renderRadarMap() {
       const data = [
@@ -217,7 +216,6 @@ export default {
         this.drawImage(content, singersURL, 132, 899, 371, 205); // 绘制歌手图片
         setTimeout(() => {
           this.sharePictureURL = canvas.toDataURL();
-          alert(this.sharePictureURL);
         }, 1000);
       };
     },
@@ -263,22 +261,16 @@ export default {
   created() {
     if (!this.isWeiXin) {
       this.isShowInput = true;
-    } else {
-      wxInit();
     }
   },
   mounted() {
     if (this.isWeiXin) {
-      judgeStatus().then((res) => {
-        if (res.data.status) {
-          this.username = res.data.data.nickname;
-          this.avatar = res.data.data.headimgurl;
-          this.renderRadarMap();
-          setTimeout(() => {
-            this.isLoading = false;
-          }, 3000);
-        }
-      });
+      this.username = getLocal('nickname');
+      this.avatar = getLocal('headimgurl');
+      this.renderRadarMap();
+      setTimeout(() => {
+        this.isLoading = false;
+      }, 3000);
     }
   }
 };
