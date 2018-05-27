@@ -197,15 +197,17 @@ export default {
       }, 1000);
     },
     renderSharePicture(username, resultText, avatarURL, radarMapDataURL, singersURL) {
-      console.log(typeof username !== 'string');
+      alert(typeof username !== 'string');
       if (typeof username !== 'string') return;
       const background = new Image();
       background.src = sharePicture;
       const canvas = document.createElement('canvas');
       const content = canvas.getContext('2d');
       // 判断缓存
-      console.log(background.complete);
+      alert(background.complete);
+      alert(background);
       if (background.complete) {
+        console.log(background);
         canvas.width = background.width;
         canvas.height = background.height;
         content.drawImage(background, 0, 0); // 绘制背景图片
@@ -237,6 +239,7 @@ export default {
           this.drawImage(content, singersURL, 132, 899, 371, 205); // 绘制歌手图片
           setTimeout(() => {
             this.sharePictureURL = canvas.toDataURL();
+            alert('loaded');
           }, 1000);
         };
       }
@@ -294,6 +297,8 @@ export default {
           this.username = res.data.data.nickname;
           this.avatar = res.data.data.headimgurl;
           this.$nextTick(() => {
+            alert(this.username);
+            alert(this.avatar);
             this.renderRadarMap();
           });
           setTimeout(() => {

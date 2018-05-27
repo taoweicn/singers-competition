@@ -22,7 +22,6 @@ export default async () => {
     });
     wx.ready(() => {
       console.log('wx ready');
-      console.log(shareIcon);
       const wxShareConfig = {
         title: '最合我音乐品味的十佳歌手原来是ta！快来一起测测吧！', // 分享标题
         desc: '测测哪位十佳歌手最合你的音乐品味', // 分享描述
