@@ -63,8 +63,8 @@ export default {
       if (!res.data.status) {
         window.location.href = res.data.data.redirect_uri;
       } else {
-        setLocal('nickname', res.data.data.nickname);
-        setLocal('headimgurl', res.data.data.headimgurl);
+        // setLocal('nickname', res.data.data.nickname);
+        // setLocal('headimgurl', res.data.data.headimgurl);
       }
     });
   },

@@ -82,7 +82,7 @@ import VoiceBox from '@/components/VoiceBox';
 import G2 from '@antv/g2';
 import { View } from '@antv/data-set';
 import wxInit from '@/plugins/wx';
-import { getLocal } from '@/utils/cache';
+import { judgeStatus } from '@/api';
 import sharePicture from '@/assets/share_demo.png';
 import defaultAvatar from '@/assets/result_user.png';
 import singer from '../../../data/singers';
@@ -98,8 +98,8 @@ export default {
       isShowMask: true,
       isShowInput: false,
       singer,
-      username: getLocal('nickname'),
-      avatar: getLocal('headimgurl') || defaultAvatar
+      username: '',
+      avatar: defaultAvatar
     };
   },
   computed: {
@@ -217,7 +217,6 @@ export default {
         this.drawImage(content, singersURL, 132, 899, 371, 205); // 绘制歌手图片
         setTimeout(() => {
           this.sharePictureURL = canvas.toDataURL();
-          alert(this.sharePictureURL);
         }, 1000);
       };
     },
@@ -269,10 +268,16 @@ export default {
   },
   mounted() {
     if (this.isWeiXin) {
-      this.renderRadarMap();
-      setTimeout(() => {
-        this.isLoading = false;
-      }, 3000);
+      judgeStatus().then((res) => {
+        if (res.data.status) {
+          this.username = res.data.data.nickname;
+          this.avatar = res.data.data.headimgurl;
+          this.renderRadarMap();
+          setTimeout(() => {
+            this.isLoading = false;
+          }, 3000);
+        }
+      });
     }
   }
 };
