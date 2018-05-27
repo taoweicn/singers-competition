@@ -217,7 +217,8 @@ export default {
         this.drawImage(content, singersURL, 132, 899, 371, 205); // 绘制歌手图片
         setTimeout(() => {
           this.sharePictureURL = canvas.toDataURL();
-        }, 1000);
+          alert(this.sharePictureURL);
+        }, 1500);
       };
     },
     drawImage(content, url, x, y, width, height) {
