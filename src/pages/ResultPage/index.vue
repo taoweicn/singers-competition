@@ -197,7 +197,7 @@ export default {
       }, 1000);
     },
     renderSharePicture(username, resultText, avatarURL, radarMapDataURL, singersURL) {
-      alert(typeof username, username);
+      alert(username);
       // if (typeof username !== 'string') return;
       const background = new Image();
       background.src = sharePicture;
@@ -274,7 +274,9 @@ export default {
         if (res.data.status) {
           this.username = res.data.data.nickname;
           this.avatar = res.data.data.headimgurl;
-          this.renderRadarMap();
+          this.$nextTick(() => {
+            this.renderRadarMap();
+          });
           setTimeout(() => {
             this.isLoading = false;
           }, 3000);
