@@ -272,7 +272,7 @@ export default {
       this.renderRadarMap();
       setTimeout(() => {
         this.isLoading = false;
-      }, 3500);
+      }, 3000);
     }
   }
 };
