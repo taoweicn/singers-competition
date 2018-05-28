@@ -68,6 +68,7 @@ export default {
     },
     clickOption(index) {
       if (this.isAnswered) return; // 防止多次点击
+      this.$refs.audio.play();
       this.$refs.audio.pause();
       this.$set(this.optionsStatus, index, true);
       setTimeout(() => {
