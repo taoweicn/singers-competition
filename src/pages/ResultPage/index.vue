@@ -113,6 +113,7 @@ export default {
       window._czc.push([ '_trackEvent', '投票按钮', '为ta打call' ]) // eslint-disable-line
     },
     confirm() {
+      if (!this.username) return;
       this.isShowInput = false;
       this.renderRadarMap();
       setTimeout(() => {
