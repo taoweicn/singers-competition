@@ -80,6 +80,7 @@ import VoiceBox from '@/components/VoiceBox';
 import G2 from '@antv/g2';
 import { View } from '@antv/data-set';
 import { judgeStatus } from '@/api';
+import { getLocal } from '@/utils/cache';
 import sharePicture from '@/assets/share_demo.png';
 import defaultAvatar from '@/assets/sharing_icon.png';
 import singer from '../../../data/singers';
@@ -267,6 +268,9 @@ export default {
     }
   },
   created() {
+    if (!getLocal('isAnswered')) {
+      this.$router.replace('/');
+    }
     if (!this.isWeiXin) {
       this.isShowInput = true;
     } else {

@@ -89,6 +89,7 @@ export default {
           }
         }, 1000);
       } else {
+        setLocal('isAnswered', true);
         this.$router.replace('/result');
       }
     }
