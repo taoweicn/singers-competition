@@ -19,7 +19,7 @@ export default {
 
 body {
   /* 流畅滚动 */
-  -webkit-overflow-scrolling: touch;
+  /*-webkit-overflow-scrolling: touch;*/
 }
 
 a,
