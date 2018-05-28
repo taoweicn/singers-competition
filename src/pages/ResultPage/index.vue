@@ -48,7 +48,7 @@
           </div>
           <div class="speaker">
             <img class="left" src="../../assets/result_user.png" alt="user">
-            <VoiceBox :audioURL="singer.audio" />
+            <VoiceBox :audioURL="singer.audio" :duration="singer.duration" />
           </div>
           <p class="prompt">
             （想看看是哪位十佳歌手为自己献唱？点击‘分享给好友’查看歌手信息！）

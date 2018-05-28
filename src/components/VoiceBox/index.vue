@@ -6,7 +6,7 @@
       @click="begin"
     >
     </button>
-    <span class="time">{{Math.round(time)}}''</span>
+    <span class="time">{{duration}}''</span>
     <div v-if="!isRead" class="dot"></div>
     <audio
       ref="audio"
@@ -23,13 +23,13 @@ import dynamicImage from '@/assets/speech_gif.gif';
 export default {
   name: 'VoiceBox',
   props: {
-    audioURL: String
+    audioURL: String,
+    duration: Number // 秒
   },
   data() {
     return {
       animate: false,
-      isRead: false,
-      time: 0 // 秒
+      isRead: false
     };
   },
   computed: {
@@ -51,21 +51,8 @@ export default {
       this.animate = true;
       this.timer = setTimeout(() => {
         this.animate = false;
-      }, this.time * 1000);
+      }, this.duration * 1000);
     }
-  },
-  mounted() {
-    const audio = new Audio();
-    audio.src = this.audioURL;
-    audio.ondurationchange = () => {
-      this.time = this.$refs.audio.duration;
-    };
-    audio.onloadedmetadata = () => {
-      this.time = this.$refs.audio.duration;
-    };
-    audio.oncanplay = () => {
-      this.time = this.$refs.audio.duration;
-    };
   }
 };
 </script>

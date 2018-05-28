@@ -17,11 +17,6 @@ export default {
   -moz-osx-font-smoothing: grayscale;
 }
 
-body {
-  /* 流畅滚动 */
-  /*-webkit-overflow-scrolling: touch;*/
-}
-
 a,
 button,
 input,
