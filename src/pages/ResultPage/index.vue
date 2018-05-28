@@ -79,7 +79,7 @@
 import VoiceBox from '@/components/VoiceBox';
 import G2 from '@antv/g2';
 import { View } from '@antv/data-set';
-import { getLocal } from '@/utils/cache';
+import { judgeStatus } from '@/api';
 import sharePicture from '@/assets/share_demo.png';
 import defaultAvatar from '@/assets/sharing_icon.png';
 import singer from '../../../data/singers';
@@ -118,7 +118,7 @@ export default {
       this.renderRadarMap();
       setTimeout(() => {
         this.isLoading = false;
-      }, 3000);
+      }, 2500);
     },
     renderRadarMap() {
       const data = [
@@ -269,16 +269,22 @@ export default {
   created() {
     if (!this.isWeiXin) {
       this.isShowInput = true;
-    }
-  },
-  mounted() {
-    if (this.isWeiXin) {
-      this.username = getLocal('nickname');
-      this.avatar = getLocal('headimgurl');
-      this.renderRadarMap();
-      setTimeout(() => {
-        this.isLoading = false;
-      }, 3000);
+    } else {
+      judgeStatus().then((res) => {
+        if (!res.data.status) {
+          window.location.href = res.data.data.redirect_uri;
+        } else {
+          let headimgurl = res.data.data.headimgurl;
+          // 解决头像跨域问题
+          headimgurl = headimgurl.replace(/^http:\/\/thirdwx\.qlogo\.cn/, 'https://weixin.bingyan-tech.hustonline.net/wechat_image');
+          this.username = res.data.data.nickname;
+          this.avatar = headimgurl;
+          this.renderRadarMap();
+          setTimeout(() => {
+            this.isLoading = false;
+          }, 2500);
+        }
+      });
     }
   }
 };

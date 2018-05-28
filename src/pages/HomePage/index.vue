@@ -63,12 +63,6 @@ export default {
     judgeStatus().then((res) => {
       if (!res.data.status) {
         window.location.href = res.data.data.redirect_uri;
-      } else {
-        let headimgurl = res.data.data.headimgurl;
-        // 解决头像跨域问题
-        headimgurl = headimgurl.replace(/^http:\/\/thirdwx\.qlogo\.cn/, 'https://weixin.bingyan-tech.hustonline.net/wechat_image');
-        setLocal('nickname', res.data.data.nickname);
-        setLocal('headimgurl', headimgurl);
       }
     });
   },
