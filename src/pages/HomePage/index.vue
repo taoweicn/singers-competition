@@ -14,7 +14,7 @@
       <div class="word-container">
         <img class="word" src="../../assets/home_font.png" alt="cover">
       </div>
-      <router-link to="/quiz" @click="track">
+      <router-link to="/quiz" @click.native="track">
         <button class="begin-button"></button>
       </router-link>
       <footer class="copyright">
