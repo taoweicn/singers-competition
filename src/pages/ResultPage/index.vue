@@ -198,7 +198,8 @@ export default {
         this.renderSharePicture(
           this.username,
           this.singer.text,
-          this.avatar,
+          // 解决头像跨域问题
+          this.avatar.replace(/^http:\/\/thirdwx\.qlogo\.cn/, 'https://weixin.bingyan-tech.hustonline.net/wechat_image'),
           chart.toDataURL(),
           this.singer.picture
         );
@@ -278,11 +279,8 @@ export default {
         if (!res.data.status) {
           window.location.href = res.data.data.redirect_uri;
         } else {
-          let headimgurl = res.data.data.headimgurl;
-          // 解决头像跨域问题
-          headimgurl = headimgurl.replace(/^http:\/\/thirdwx\.qlogo\.cn/, 'https://weixin.bingyan-tech.hustonline.net/wechat_image');
           this.username = res.data.data.nickname;
-          this.avatar = headimgurl;
+          this.avatar = res.data.data.headimgurl;
           this.renderRadarMap();
           setTimeout(() => {
             this.isLoading = false;
