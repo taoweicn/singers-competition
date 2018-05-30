@@ -280,7 +280,7 @@ export default {
           window.location.href = res.data.data.redirect_uri;
         } else {
           this.username = res.data.data.nickname;
-          this.avatar = res.data.data.headimgurl;
+          this.avatar = res.data.data.headimgurl || defaultAvatar;
           this.renderRadarMap();
           setTimeout(() => {
             this.isLoading = false;
